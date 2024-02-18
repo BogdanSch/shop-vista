@@ -39,6 +39,7 @@ export class Cart {
   }
   clearCart() {
     localStorage.removeItem(this.name);
+    this.displayCartItems();
   }
   displayCartItems() {
     if (this.cartData) {

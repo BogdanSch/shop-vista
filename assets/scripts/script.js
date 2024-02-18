@@ -4,7 +4,11 @@ import { ProductsLoader } from "./product-loader.js";
 import { Cart } from "./cart.js";
 
 const productsList = document.querySelector(".products__list");
-const cartProductsList = document.querySelector(".header__cart__list");
+const cartProductsList = document.querySelector(
+  ".header__cart__list .items-list"
+);
+
+const clearCartButton = document.querySelector("#clearCartButton");
 
 function showProducts(htmlContent) {
   productsList.innerHTML = htmlContent;
@@ -28,8 +32,11 @@ function main() {
   addToCartButtons.forEach((addToCartButton) => {
     addToCartButton.addEventListener("click", (event) => {
       const buttonParent = addToCartButton.parentNode.parentNode;
-      console.log(buttonParent);
       cart.addItem(buttonParent);
     });
+  });
+
+  clearCartButton.addEventListener("click", (event) => {
+    cart.clearCart();
   });
 }

@@ -25,8 +25,8 @@ export class Product {
       <h3 class="header__cart__list-item__title">${this.name}</h3>
       <div class="header__cart__list-item__controls">
           <button class="btn btn-minus">-</button>
-          <input type="text" class="form-control w-25">
-          <button class="btn btn-add">+</button>
+          <input type="text" class="form-control amount-input w-25" name="amountInput">
+          <button class="btn btn-add">+</button> 
       </div>
       <span class="header__cart__list-item__price">${this.price}$</span>
     </li>`;
