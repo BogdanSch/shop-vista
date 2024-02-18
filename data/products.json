@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Iphone 14",
+    "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRYwuuVJ0OyTYH97mc9vFhpCLtVjP7uUKIaAygdXp_ivviUxUco",
+    "price": 700,
+    "count": 1
+  },
+  {
+    "id": 2,
+    "name": "Iphone 15",
+    "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSLRpkRleOKI5PWyfsIRa8VjA6Bu-mEhSBOpUcm-OacMzjKpz1k",
+    "price": 900,
+    "count": 1
+  },
+  {
+    "id": 3,
+    "name": "Iphone 13",
+    "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHZbqE9CHq3Qkn8M748fKbHgreHfEsvPWXthijsQo7bDywnV0a",
+    "price": 650,
+    "count": 1
+  },
+  {
+    "id": 4,
+    "name": "Iphone 11",
+    "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVzvpGy4qM4G7LBiyz-sFuyihKnpSCvQuXTmeubq_POKnqxV7K",
+    "price": 500,
+    "count": 1
+  }
+]

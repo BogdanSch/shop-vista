@@ -1,0 +1,110 @@
+//General - Start
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+//General - End
+//Header - Start
+.header {
+  &__wrap {
+    @include flex-row();
+    justify-content: space-between; //media query to wrap
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  &__logo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  &__menu {
+    @include flex-row();
+    flex-wrap: wrap;
+  }
+  &__cart {
+    position: relative;
+
+    .shopping-cart {
+      cursor: pointer;
+    }
+    &__list {
+      display: none;
+      position: absolute;
+      top: 0;
+      list-style: none;
+      padding: 20px 10px;
+      display: none;
+      position: absolute;
+      background-color: #dadada;
+      border-radius: 20px;
+
+      &-item {
+        @include flex-row();
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+      }
+    }
+  }
+}
+// Header - End */
+// Products - Start */
+.products {
+  &__list {
+    @include flex-row();
+    justify-content: center;
+    row-gap: 20px;
+    column-gap: 20px;
+    flex-wrap: wrap;
+
+    &-item {
+      width: 16rem;
+      &__add-button {
+        display: block;
+      }
+    }
+  }
+}
+//Products - End
+
+// Media - Start
+@media only screen and (max-width: 486px) {
+  .header {
+    &__wrap {
+      justify-content: center;
+    }
+  }
+  .products {
+    &__list {
+      row-gap: 10px;
+      column-gap: 0;
+
+      &-item {
+        width: 80%;
+      }
+    }
+  }
+}
+//Media - End
