@@ -1,9 +1,12 @@
 import { Product } from "./product.js";
 
 export class Cart {
-  constructor(name, cartProductsList) {
+  #currency = `$`;
+
+  constructor(name, cartProductsList, totalPriceLabel) {
     this.name = name;
     this.cartProductsList = cartProductsList;
+    this.totalPriceLabel = totalPriceLabel;
     this.cartData = this.getCartData();
   }
 
@@ -20,18 +23,32 @@ export class Cart {
     this.getCartData();
 
     const itemId = item.getAttribute("data-product-id");
-    const itemPicture = item.querySelector(".products__list-item__picture").src;
-    const itemTitle = item.querySelector(
-      ".products__list-item__title"
-    ).innerHTML;
-    const itemPrice = item.querySelector(
-      ".products__list-item__price"
-    ).innerHTML;
 
     if (this.cartData.hasOwnProperty(itemId)) {
       this.cartData[itemId][3] += 1;
     } else {
+      const itemPicture = item.querySelector(`[class*="__picture"]`).src;
+      const itemTitle = item.querySelector(`[class*="__title"]`).innerHTML;
+      const itemPrice = item.querySelector(`[class*="__price"]`).innerHTML;
+
       this.cartData[itemId] = [itemTitle, itemPicture, itemPrice, 1];
+    }
+
+    this.setCartData();
+    this.displayCartItems();
+  }
+  removeItem(item) {
+    this.getCartData();
+    const itemId = item.getAttribute("data-product-id");
+
+    if (this.cartData.hasOwnProperty(itemId)) {
+      this.cartData[itemId][3] -= 1;
+
+      if (this.cartData[itemId][3] <= 0) {
+        delete this.cartData[itemId];
+      }
+    } else {
+      throw new Error("No such item was found!");
     }
 
     this.setCartData();
@@ -42,7 +59,8 @@ export class Cart {
     this.displayCartItems();
   }
   displayCartItems() {
-    if (this.cartData) {
+    this.getCartData();
+    if (Object.keys(this.cartData).length) {
       let htmlContent = "";
       for (const key in this.cartData) {
         if (Object.hasOwnProperty.call(this.cartData, key)) {
@@ -51,25 +69,50 @@ export class Cart {
             key,
             productData[0],
             productData[1],
-            productData[2],
+            productData[2] * productData[3],
             productData[3]
           );
           htmlContent += product.renderCartProduct();
         }
+        this.cartProductsList.innerHTML = htmlContent;
       }
-      this.cartProductsList.innerHTML = htmlContent;
+
+      this.addCartHandlers();
+      this.displayTotalPrice();
+    } else {
+      this.cartProductsList.innerHTML = `Nothing yet to buy...`;
+      this.displayTotalPrice();
     }
   }
-  getProductsCount() {
-    if (this.cartData) {
-      let count = 0;
+  addCartHandlers() {
+    const plusItemButtons = this.cartProductsList.querySelectorAll(".btn-add");
+    const minusItemButtons =
+      this.cartProductsList.querySelectorAll(".btn-minus");
+
+    plusItemButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        this.addItem(button.parentNode.parentNode);
+      });
+    });
+    minusItemButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        this.removeItem(button.parentNode.parentNode);
+      });
+    });
+  }
+
+  displayTotalPrice() {
+    if (Object.keys(this.cartData).length) {
+      let totalPrice = 0;
       for (const key in this.cartData) {
         if (Object.hasOwnProperty.call(this.cartData, key)) {
           const product = this.cartData[key];
-          count += product[3];
+          totalPrice += parseFloat(product[2]) * parseFloat(product[3]);
         }
       }
-      return count;
+      this.totalPriceLabel.innerHTML = `${totalPrice}${this.#currency}`;
+    } else {
+      this.totalPriceLabel.innerHTML = `0${this.#currency}`;
     }
   }
 }

@@ -21,14 +21,23 @@ export class Product {
   renderCartProduct() {
     return `
     <li class="header__cart__list-item" data-product-id="${this.id}">
-      <img class="header__cart__list-item__image" src="${this.picture}" alt="${this.name}">
+      <img class="header__cart__list-item__picture" src="${this.picture}" alt="${this.name}">
       <h3 class="header__cart__list-item__title">${this.name}</h3>
       <div class="header__cart__list-item__controls">
           <button class="btn btn-minus">-</button>
-          <input type="text" class="form-control amount-input w-25" name="amountInput">
+          <input type="number" class="form-control amount-input" disabled="" value="${this.amount}" name="amountInput">
           <button class="btn btn-add">+</button> 
       </div>
       <span class="header__cart__list-item__price">${this.price}$</span>
     </li>`;
   }
+  // cartClickHandler(event) {
+  //   const target = event.target;
+  //   if (target.classList.contains("btn-minus")) {
+  //     this.amount -= 1;
+  //   } else {
+  //     this.amount += 1;
+  //   }
+  //   return this.renderCartProduct();
+  // }
 }

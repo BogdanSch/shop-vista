@@ -22,6 +22,13 @@
   },
   {
     "id": 4,
+    "name": "Iphone 12",
+    "picture": "https://cf-images.dustin.eu/cdn-cgi/image/format=auto,quality=75,width=828,,fit=contain/image/d200001002255063/apple-iphone-12-128gb-groen.jpg",
+    "price": 600,
+    "count": 1
+  },
+  {
+    "id": 5,
     "name": "Iphone 11",
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVzvpGy4qM4G7LBiyz-sFuyihKnpSCvQuXTmeubq_POKnqxV7K",
     "price": 500,

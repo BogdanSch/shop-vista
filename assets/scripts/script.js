@@ -7,6 +7,7 @@ const productsList = document.querySelector(".products__list");
 const cartProductsList = document.querySelector(
   ".header__cart__list .items-list"
 );
+const totalPriceLabel = document.querySelector(".items-total-price");
 
 const clearCartButton = document.querySelector("#clearCartButton");
 
@@ -26,7 +27,7 @@ function main() {
     ".products__list-item__add-button"
   );
 
-  const cart = new Cart("cart", cartProductsList);
+  const cart = new Cart("cart", cartProductsList, totalPriceLabel);
   cart.displayCartItems();
 
   addToCartButtons.forEach((addToCartButton) => {
