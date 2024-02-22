@@ -37,6 +37,16 @@ h2,
 h3 {
   font-weight: 700;
 }
+
+.btn{
+  &-shopping-cart{
+    padding: 0;
+    &:focus{
+      background: transparent;
+      border: none;
+    }
+  }
+}
 //General - End
 //Header - Start
 .header {
@@ -61,35 +71,37 @@ h3 {
     position: relative;
     width: 40px !important;
 
-    &:hover .header__cart__list {
-      height: auto;
-    }
+    .btn-shopping-cart {
+      width: 40px;
 
-    .shopping-cart {
-      cursor: pointer;
-      position: relative;
+      &:hover + .header__cart__list {
+        display: block;
+        height: auto !important;
+      }
+
+      .shopping-cart {
+        cursor: pointer;
+      }
     }
 
     &__list {
-      display: block;
+      display: none;
       position: absolute;
       top: calc(100% + 10px);
       right: -240%;
       list-style: none;
       padding: 10px;
-      display: none;
-      position: absolute;
       background-color: $white;
       border: 1px solid $dark-border;
-      border-radius: 20px;
+      border-radius: 16px;
       z-index: 100;
-      min-width: 200px;
+      min-width: 300px;
       height: 0;
 
       .items {
         &-list {
           @include flex-column();
-          row-gap: 10px;
+          row-gap: 8px;
           color: $dark;
         }
         &-data {
