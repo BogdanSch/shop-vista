@@ -13,8 +13,7 @@ export class Product {
       <div class="card-body">
         <h3 class="products__list-item__title card-title">${this.name}</h3>
         <p>Price: <span class="products__list-item__price">${this.price}</span>$</p>
-        <button class="products__list-item__add-button btn btn-outline-primary">Add
-        to Cart</button>
+        <button class="products__list-item__add-button btn btn-outline-info">Add to Cart</button>
       </div>
     </div>`;
   }

@@ -13,6 +13,7 @@
 $dark: #0d0d0d;
 $white: #f7f7f7;
 $dark-border: #0000002d;
+$card-shadow: rgba(0, 0, 0, 0.1);
 
 * {
   transition: all 0.7s ease;
@@ -30,6 +31,8 @@ body {
 
 .wrapper {
   overflow: hidden;
+  @include flex-column();
+  min-height: 100vh;
 }
 
 h1,
@@ -38,13 +41,41 @@ h3 {
   font-weight: 700;
 }
 
-.btn{
-  &-shopping-cart{
+.main {
+  flex: 1;
+  @include flex-column();
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  &-shopping-cart {
     padding: 0;
-    &:focus{
+    &:focus {
       background: transparent;
       border: none;
     }
+  }
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px $card-shadow;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px $card-shadow;
+  }
+
+  &-body {
+    padding: 1.5rem;
+  }
+
+  &-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 }
 //General - End
@@ -70,14 +101,16 @@ h3 {
   &__cart {
     position: relative;
     width: 40px !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    &:hover .header__cart__list {
+      display: block;
+      height: auto !important;
+    }
 
     .btn-shopping-cart {
-      width: 40px;
-
-      &:hover + .header__cart__list {
-        display: block;
-        height: auto !important;
-      }
+      width: 100% !important;
 
       .shopping-cart {
         cursor: pointer;
@@ -87,7 +120,7 @@ h3 {
     &__list {
       display: none;
       position: absolute;
-      top: calc(100% + 10px);
+      top: 100%;
       right: -240%;
       list-style: none;
       padding: 10px;
@@ -167,6 +200,11 @@ h3 {
   }
 }
 //Products - End
+//Footer - Start
+.footer {
+  margin-top: auto;
+}
+//Footer - End
 //Media - Start
 @media only screen and (max-width: 539px) {
   .header {
