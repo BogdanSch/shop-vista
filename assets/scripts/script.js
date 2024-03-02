@@ -9,9 +9,13 @@ function showProducts(htmlContent) {
   productsList.innerHTML = htmlContent;
 }
 
-const productsLoader = new ProductsLoader(
-  "../data/products.json",
-  showProducts,
-  main
-);
-productsLoader.loadProducts();
+if (productsList) {
+  const productsLoader = new ProductsLoader(
+    "../data/products.json",
+    showProducts,
+    main
+  );
+  productsLoader.loadProducts();
+} else {
+  main();
+}

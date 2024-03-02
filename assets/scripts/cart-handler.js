@@ -1,4 +1,5 @@
 import { Cart } from "./modules/cart.js";
+import imagesLoader from "./images-loader.js";
 
 const cartProductsList = document.querySelector(
   ".header__cart__list .items-list"
@@ -14,6 +15,8 @@ export function main() {
 
   const cart = new Cart("cart", cartProductsList, totalPriceLabel);
   cart.displayCartItems();
+
+  imagesLoader();
 
   addToCartButtons.forEach((addToCartButton) => {
     addToCartButton.addEventListener("click", (event) => {
