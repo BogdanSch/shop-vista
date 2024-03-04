@@ -208,6 +208,61 @@ h3 {
   margin-top: auto;
 }
 //Footer - End
+//ChatBot - Start
+
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  left: calc(100% - 20px);
+  width: 200px;
+  height: 300px;
+  background-color: $accent;
+  overflow-y: auto;
+  padding: 5px 25px;
+  transition: all 0.5s;
+}
+form#form_chatbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-width: 100%;
+  min-height: 100%;
+}
+form#form_chatbox input {
+  align-self: flex-start;
+  margin: 5px;
+}
+.show {
+  left: calc(100% - 220px) !important;
+}
+//ChatBot - End
+//ScrollTop - Start
+.scroll-top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $accent;
+  border-radius: 8px;
+  cursor: pointer;
+  @include flex-row();
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  display: none;
+
+  &.active {
+    display: flex;
+  }
+
+  svg {
+    fill: $white;
+    width: 30px;
+  }
+}
+//ScrollTop - End
 //Media - Start
 @media only screen and (max-width: 539px) {
   .header {
