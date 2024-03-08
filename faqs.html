@@ -16,60 +16,6 @@
 
 <body>
     <div class="wrapper">
-        <header class="header p-3 bg-dark text-light" id="start">
-            <div class="container">
-                <div class="header__wrap">
-                    <a href="/"
-                        class="header__logo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        ShopVista
-                    </a>
-                    <div class="header__menu">
-                        <nav class="header__menu__list nav justify-content-center">
-                            <li class="header__menu__list-item active"><a href="#" class="nav-link px-2">Home</a></li>
-                            <li class="header__menu__list-item"><a href="#" class="nav-link px-2">Catalog</a></li>
-                            <li class="header__menu__list-item"><a href="#" class="nav-link px-2">About</a></li>
-                            <li class="header__menu__list-item"><a href="#" class="nav-link px-2">Blog</a></li>
-                            <li class="header__menu__list-item"><a href="#" class="nav-link px-2">FAQs</a></li>
-                        </nav>
-                        <div class="header__cart">
-                            <svg class="shopping-cart">
-                                <use xlink:href='#basketShopping'></use>
-                            </svg>
-                            <ul class="header__cart__list">
-                                <div class="items-list">
-                                    Nothing yet to buy...
-                                </div>
-                                <div class="items-data mt-3">
-                                    <button type="button" class="btn btn-danger btn-clear" id="clearCartButton">Clear
-                                        the cart</button>
-                                    <a class="btn btn-success btn-clear" href="./check-out.html"
-                                        id="clearCartButton">Check
-                                        out</a>
-                                    <span class="items-total-price">
-                                        0$
-                                    </span>
-                                </div>
-                            </ul>
-                        </div>
-                        <div class="profile dropdown text-end">
-                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg class="profile__img">
-                                    <use xlink:href='#userProfile'></use>
-                                </svg>
-                            </a>
-                            <ul class="profile__dropdown dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                                <li><a class="dropdown-item" href="#">Sign in</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign up</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
         <main class="main" id="main">
             <section class="faq mt-5 mb-5">
                 <div class="container">
@@ -78,16 +24,19 @@
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Question 1: Lorem ipsum dolor sit amet?
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Question 1: How can I track my order?
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        Answer 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                                        molestie odio ac dui mattis, eu sagittis ipsum luctus.
+                                        Answer 1: You can easily track your order by logging into your account and
+                                        navigating
+                                        to the 'Orders' section. There, you'll find detailed information about the
+                                        status
+                                        of your order and its shipment tracking number.
                                     </div>
                                 </div>
                             </div>
@@ -95,15 +44,15 @@
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Question 2: Quisque quis sapien vel sem vulputate?
+                                        Question 2: Do you offer international shipping?
                                     </button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        Answer 2: Quisque quis sapien vel sem vulputate consectetur ut eget mi.
-                                        Vestibulum sit amet semper est. Integer sit amet sem vitae lacus volutpat
-                                        efficitur ut ut tellus.
+                                        Answer 2: Yes, we provide international shipping services to various countries
+                                        worldwide. However, please note that shipping fees and delivery times may vary
+                                        depending on your location and the shipping method selected during checkout.
                                     </div>
                                 </div>
                             </div>
@@ -112,30 +61,6 @@
                 </div>
             </section>
         </main>
-        <footer class="footer bg-dark">
-            <div class="container">
-                <div class="footer__wrap d-flex flex-wrap justify-content-between align-items-center py-3">
-                    <div class="col-md-4 d-flex align-items-center justify-content-start flex-wrap">
-                        <a href="/" class="mb-3 me-2 mb-md-0 text-decoration-none lh-1 text-white">
-                            ShopVista
-                        </a>
-                        <span class="mb-3 mb-md-0 text-light">©2023 Company, Inc</span>
-                    </div>
-                    <ul class="footer__list nav col-md-4 justify-content-end">
-                        <li class="footer__list-item active"><a href="#" class="nav-link px-2">Home</a></li>
-                        <li class="footer__list-item"><a href="#" class="nav-link px-2">Catalog</a></li>
-                        <li class="footer__list-item"><a href="#" class="nav-link px-2">About</a></li>
-                        <li class="footer__list-item"><a href="#" class="nav-link px-2">Blog</a></li>
-                        <li class="footer__list-item"><a href="#" class="nav-link px-2">FAQs</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-        <a class="scroll-top" href="#start">
-            <svg class="scroll-top__svg">
-                <use xlink:href='#arrowTop'></use>
-            </svg>
-        </a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

@@ -28,9 +28,14 @@
 $accent: #008080;
 $accent-light: #00dada;
 $dark: #0d0d0d;
+$dark-light: #313131;
 $white: #f7f7f7;
+$grey: #f3f3f3;
 $dark-border: #0000002d;
 $card-shadow: rgba(0, 0, 0, 0.1);
+
+$button-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+  0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 // * {
 //   transition: all 0.7s ease;
@@ -44,6 +49,9 @@ body {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  &.loaded .loader {
+    display: none;
+  }
 }
 
 .wrapper {
@@ -52,10 +60,18 @@ body {
   min-height: 100vh;
 }
 
-h1,
 h2,
 h3 {
   font-weight: 700;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 36px;
+}
+
+p {
+  color: $dark-light;
 }
 
 .main {
@@ -66,8 +82,21 @@ h3 {
 }
 
 .btn {
+  transition: all 0.5s ease;
+  padding: 12px 32px;
+  border-radius: 12px;
+
   &-primary {
     background-color: $accent;
+    border: 1px solid $accent;
+
+    &:hover {
+      color: $white;
+      background-color: $accent;
+      box-shadow: $button-shadow;
+      transform: translateY(-4px);
+      border: 1px solid $accent;
+    }
   }
   &-outline-primary {
     color: $accent;
@@ -76,6 +105,8 @@ h3 {
       color: $white;
       border: 1px solid $accent;
       background-color: $accent;
+      transform: translateY(-4px);
+      box-shadow: $button-shadow;
     }
   }
 }
@@ -100,7 +131,45 @@ h3 {
     margin-bottom: 0.5rem;
   }
 }
+
+.text-content {
+  display: block;
+  max-width: 60%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
 //General - End
+//Loader - Start
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__wrapper {
+    border: 16px solid $white;
+    border-top: 16px solid $accent;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+//Loader - End
 //Header - Start
 .header {
   &__wrap {
@@ -227,8 +296,26 @@ h3 {
 }
 //Header - End
 //Hero - Start
-.hero{
-  
+.hero {
+  padding-top: 200px;
+  padding-bottom: 200px;
+  width: 100%;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
+    url("../images/store.avif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &__title {
+    color: $white;
+    font-weight: 900;
+    font-size: 48px;
+  }
+  &__description {
+    color: $grey;
+  }
 }
 //Hero - End
 //Products - Start
@@ -249,6 +336,9 @@ h3 {
   }
 }
 //Products - End
+//FAQS - Start
+/* FAQ Section Styles */
+//FAQS - End
 //Footer - Start
 .footer {
   margin-top: auto;
@@ -261,7 +351,6 @@ h3 {
 }
 //Footer - End
 //ChatBot - Start
-
 #chatbot {
   position: fixed;
   bottom: 20px;

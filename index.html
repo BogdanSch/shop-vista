@@ -16,6 +16,9 @@
 
 <body>
     <div class="wrapper">
+        <div class="loader">
+            <div class="loader__wrapper"></div>
+        </div>
         <header class="header p-3 bg-dark text-light" id="start">
             <div class="container">
                 <div class="header__wrap">
@@ -54,10 +57,8 @@
                             </ul>
                         </div>
                         <div class="profile dropdown text-end">
-                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <!-- <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
-                                    class="rounded-circle"> -->
+                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="userProfile"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg class="profile__img">
                                     <use xlink:href='#userProfile'></use>
                                 </svg>
@@ -78,15 +79,30 @@
             <section class="hero mb-5">
                 <div class="container">
                     <div class="hero__wrap">
-
+                        <h1 class="hero__title text-center">Welcome to our Tech Store</h1>
+                        <p class="hero__description text-center">Explore the latest collection of phones and laptops
+                            from top brands</p>
+                        <div class="hero__more text-center mt-4">
+                            <a href="#products" class="btn btn-primary btn-lg">Shop Now</a>
+                        </div>
                     </div>
                 </div>
             </section>
-            <section class="products mt-5 mb-5">
+            <section class="products mb-5" id="products">
                 <div class="container">
                     <div class="products__wrap">
-                        <h2 class="products__title text-center">Iphones</h2>
+                        <div class="text-content">
+                            <h2 class="products__title text-center">Latest deals</h2>
+                            <p class="products__description text-center">Discover our diverse selection of high-quality
+                                tech products, ranging from cutting-edge smartphones to powerful laptops, designed to
+                                elevate
+                                your digital experience. Explore our curated collection and find the perfect device to
+                                suit your needs and style.</p>
+                        </div>
                         <div class="products__list mt-5"></div>
+                        <div class="products__more text-center mt-5">
+                            <a href="./store.html" class="btn btn-outline-primary btn-lg">Shop More</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -150,6 +166,7 @@
     <script type="module" src="./assets/scripts/script.js"></script>
     <script src="./assets/scripts/chat-bot.js"></script>
     <script src="./assets/scripts/scroll-top.js"></script>
+    <script src="./assets/scripts/loader.js"></script>
 </body>
 
 </html>

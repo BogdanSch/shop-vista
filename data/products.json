@@ -4,6 +4,7 @@
     "name": "Iphone 14",
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRYwuuVJ0OyTYH97mc9vFhpCLtVjP7uUKIaAygdXp_ivviUxUco",
     "price": 700,
+    "category": "Iphone",
     "count": 1
   },
   {
@@ -11,6 +12,7 @@
     "name": "Iphone 15",
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSLRpkRleOKI5PWyfsIRa8VjA6Bu-mEhSBOpUcm-OacMzjKpz1k",
     "price": 900,
+    "category": "Iphone",
     "count": 1
   },
   {
@@ -18,6 +20,7 @@
     "name": "Iphone 13",
     "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHZbqE9CHq3Qkn8M748fKbHgreHfEsvPWXthijsQo7bDywnV0a",
     "price": 650,
+    "category": "Iphone",
     "count": 1
   },
   {
@@ -25,6 +28,7 @@
     "name": "Iphone 12",
     "picture": "https://cf-images.dustin.eu/cdn-cgi/image/format=auto,quality=75,width=828,,fit=contain/image/d200001002255063/apple-iphone-12-128gb-groen.jpg",
     "price": 600,
+    "category": "Iphone",
     "count": 1
   },
   {
@@ -32,6 +36,7 @@
     "name": "Iphone 11",
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVzvpGy4qM4G7LBiyz-sFuyihKnpSCvQuXTmeubq_POKnqxV7K",
     "price": 500,
+    "category": "Iphone",
     "count": 1
   },
   {
@@ -39,6 +44,7 @@
     "name": "Iphone 15 Pro",
     "picture": "https://assets.odido.nl/305x450/077fc755fb/dvi-back-front_apple_iphone_15pro_kleur4_305x450_v1.png",
     "price": 1200,
+    "category": "Iphone",
     "count": 1
   },
   {
@@ -46,6 +52,7 @@
     "name": "Iphone 14 Pro",
     "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTblass_xf-phjxvN-XhKepqIqNYqLE31bFlXPIuNYcFCts0ao8",
     "price": 990,
+    "category": "Iphone",
     "count": 1
   },
   {
@@ -53,6 +60,7 @@
     "name": "Iphone 15 Pro Max",
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTjP87bqzjBuQA0sM-DBArF9mJSkj4vlXaCfMV91kbPr7UUJCz-",
     "price": 1400,
+    "category": "Iphone",
     "count": 1
   },
   {
@@ -60,6 +68,7 @@
     "name": "Iphone 13 Pro",
     "picture": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-iphone-13-pro-max-gold-2023?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1679072988850",
     "price": 800,
+    "category": "Iphone",
     "count": 1
   }
 ]
