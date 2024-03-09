@@ -4,7 +4,6 @@ const imagesLoader = () => {
   const placeholderPath = `https://placehold.co/600x400`;
 
   const images = document.querySelectorAll("img");
-  console.log(images);
 
   function setupImages() {
     images.forEach((image) => {

@@ -7,6 +7,7 @@
     <title>Shop Vista - Online Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
@@ -29,7 +30,8 @@
                     <div class="header__menu">
                         <nav class="header__menu__list nav justify-content-center">
                             <li class="header__menu__list-item active"><a href="#" class="nav-link px-2">Home</a></li>
-                            <li class="header__menu__list-item"><a href="#" class="nav-link px-2">Catalog</a></li>
+                            <li class="header__menu__list-item"><a href="./store.html" class="nav-link px-2">Store</a>
+                            </li>
                             <li class="header__menu__list-item"><a href="./about.html" class="nav-link px-2">About</a>
                             </li>
                             <li class="header__menu__list-item"><a href="#" class="nav-link px-2">Blog</a></li>
@@ -76,7 +78,7 @@
             </div>
         </header>
         <main class="main">
-            <section class="hero mb-5">
+            <section class="hero">
                 <div class="container">
                     <div class="hero__wrap">
                         <h1 class="hero__title text-center">Welcome to our Tech Store</h1>
@@ -84,6 +86,45 @@
                             from top brands</p>
                         <div class="hero__more text-center mt-4">
                             <a href="#products" class="btn btn-primary btn-lg">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="features mb-5">
+                <div class="container">
+                    <div class="features__wrap">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="features__item text-center">
+                                    <div class="features__icon">
+                                        <i class="bi bi-shield-fill-check"></i>
+                                    </div>
+                                    <h3 class="features__title">Secure Shopping</h3>
+                                    <p class="features__description">Shop with confidence knowing that your personal and
+                                        payment information is always safe and secure.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="features__item text-center">
+                                    <div class="features__icon">
+                                        <i class="bi bi-truck"></i>
+                                    </div>
+                                    <h3 class="features__title">Fast Shipping</h3>
+                                    <p class="features__description">Enjoy fast and reliable shipping services, ensuring
+                                        that your orders arrive promptly at your doorstep.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="features__item text-center">
+                                    <div class="features__icon">
+                                        <i class="bi bi-headset"></i>
+                                    </div>
+                                    <h3 class="features__title">Excellent Customer Support</h3>
+                                    <p class="features__description">Our dedicated customer support team is available
+                                        24/7
+                                        to assist you with any inquiries or concerns you may have.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -101,7 +142,7 @@
                         </div>
                         <div class="products__list mt-5"></div>
                         <div class="products__more text-center mt-5">
-                            <a href="./store.html" class="btn btn-outline-primary btn-lg">Shop More</a>
+                            <a href="./store.html" class="btn btn-primary btn-lg">Shop More</a>
                         </div>
                     </div>
                 </div>
@@ -126,13 +167,13 @@
                 </div>
             </div>
         </footer>
-        <!-- <div id="chatbot">
-            <form action="" id="form_chatbox">
-                <div id="answers"></div>
+        <div class="chatbot" id="chatbot">
+            <form action="none" class="chatbot__form" id="form_chatbox">
+                <div class="chatbot__answers" id="answers"></div>
                 <input type="text" name="userInput" id="questionInput" class="form-control" />
-                <input type="submit" class="btn btn-primary" value="OK" id="chatbot-submit" />
+                <input type="submit" class="btn btn-primary" value="OK" id="chatbotSubmit" />
             </form>
-        </div> -->
+        </div>
         <a class="scroll-top" href="#start">
             <svg class="scroll-top__svg">
                 <use xlink:href='#arrowTop'></use>
@@ -163,10 +204,12 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="./assets/scripts/lib/jquery-3.7.1.slim.min.js"></script>
-    <script type="module" src="./assets/scripts/script.js"></script>
-    <script src="./assets/scripts/chat-bot.js"></script>
+    <script src="./assets/scripts/site-loader.js"></script>
     <script src="./assets/scripts/scroll-top.js"></script>
-    <script src="./assets/scripts/loader.js"></script>
+    <script src="./assets/scripts/header.js"></script>
+    <script src="./assets/scripts/chat-bot.js"></script>
+    <script type="module" src="./assets/scripts/script.js"></script>
+    <!-- <script src="./assets/scripts/chat-bot.js"></script> -->
 </body>
 
 </html>
