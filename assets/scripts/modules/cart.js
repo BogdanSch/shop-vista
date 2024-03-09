@@ -27,11 +27,18 @@ export class Cart {
     if (this.cartData.hasOwnProperty(itemId)) {
       this.cartData[itemId][3] += 1;
     } else {
-      const itemPicture = item.querySelector(`[class*="__picture"]`).src;
-      const itemTitle = item.querySelector(`[class*="__title"]`).innerHTML;
-      const itemPrice = item.querySelector(`[class*="__price"]`).innerHTML;
+      const itemPicture = item.querySelector(`[class*="-picture"]`).src;
+      const itemTitle = item.querySelector(`[class*="-title"]`).innerHTML;
+      const itemPrice = item.querySelector(`[class*="-price"]`).innerHTML;
+      const itemCategory = item.querySelector(`[class*="-category"]`).innerHTML;
 
-      this.cartData[itemId] = [itemTitle, itemPicture, itemPrice, 1];
+      this.cartData[itemId] = [
+        itemTitle,
+        itemPicture,
+        itemPrice,
+        1,
+        itemCategory,
+      ];
     }
 
     this.setCartData();
@@ -70,7 +77,8 @@ export class Cart {
             productData[0],
             productData[1],
             productData[2] * productData[3],
-            productData[3]
+            productData[3],
+            productData[4]
           );
           htmlContent += product.renderCartProduct();
         }

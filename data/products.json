@@ -5,7 +5,8 @@
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRYwuuVJ0OyTYH97mc9vFhpCLtVjP7uUKIaAygdXp_ivviUxUco",
     "price": 700,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2023-01-15"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSLRpkRleOKI5PWyfsIRa8VjA6Bu-mEhSBOpUcm-OacMzjKpz1k",
     "price": 900,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2023-02-20"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSHZbqE9CHq3Qkn8M748fKbHgreHfEsvPWXthijsQo7bDywnV0a",
     "price": 650,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2022-11-10"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "picture": "https://cf-images.dustin.eu/cdn-cgi/image/format=auto,quality=75,width=828,,fit=contain/image/d200001002255063/apple-iphone-12-128gb-groen.jpg",
     "price": 600,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2022-09-05"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVzvpGy4qM4G7LBiyz-sFuyihKnpSCvQuXTmeubq_POKnqxV7K",
     "price": 500,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2022-07-30"
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "picture": "https://assets.odido.nl/305x450/077fc755fb/dvi-back-front_apple_iphone_15pro_kleur4_305x450_v1.png",
     "price": 1200,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2023-04-18"
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTblass_xf-phjxvN-XhKepqIqNYqLE31bFlXPIuNYcFCts0ao8",
     "price": 990,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2023-03-10"
   },
   {
     "id": 8,
@@ -61,14 +68,61 @@
     "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTjP87bqzjBuQA0sM-DBArF9mJSkj4vlXaCfMV91kbPr7UUJCz-",
     "price": 1400,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2023-05-25"
   },
   {
     "id": 9,
-    "name": "Iphone 13 Pro",
-    "picture": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-iphone-13-pro-max-gold-2023?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1679072988850",
+    "name": "Iphone SE",
+    "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwO4oWS3onEt5h-btA9SkEWsUorIbZIXPLhn4NUC9sfEt78tKS",
     "price": 800,
     "category": "Iphone",
-    "count": 1
+    "count": 1,
+    "created_date": "2022-12-01"
+  },
+  {
+    "id": 10,
+    "name": "Macbook Pro M2",
+    "picture": "https://macrepair.nl/wp-content/uploads/2023/02/MacBook-Pro-16-inch-M2-Space-Gray.png",
+    "price": 2000,
+    "category": "Laptop",
+    "count": 1,
+    "created_date": "2023-06-10"
+  },
+  {
+    "id": 11,
+    "name": "Dell XPS 15",
+    "picture": "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-15-9530/media-gallery/touch-black/notebook-xps-15-9530-t-black-gallery-1.psd?fmt=pjpg&pscan=auto&scl=1&wid=3778&hei=2323&qlt=100,1&resMode=sharp2&size=3778,2323&chrss=full&imwidth=5000",
+    "price": 1800,
+    "category": "Laptop",
+    "count": 1,
+    "created_date": "2023-07-20"
+  },
+  {
+    "id": 12,
+    "name": "HP Spectre x360",
+    "picture": "https://m.media-amazon.com/images/I/71Pq8ZqRSLL._AC_UF894,1000_QL80_.jpg",
+    "price": 1500,
+    "category": "Laptop",
+    "count": 1,
+    "created_date": "2023-08-05"
+  },
+  {
+    "id": 13,
+    "name": "Macbook Air M2",
+    "picture": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303665",
+    "price": 1050,
+    "category": "Laptop",
+    "count": 1,
+    "created_date": "2023-06-10"
+  },
+  {
+    "id": 14,
+    "name": "Lenovo Ideapad Gaming 3",
+    "picture": "https://image.coolblue.nl/max/500x500/products/1949622",
+    "price": 990,
+    "category": "Laptop",
+    "count": 1,
+    "created_date": "2023-06-10"
   }
 ]
