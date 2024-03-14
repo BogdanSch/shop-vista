@@ -18,7 +18,8 @@ export class ProductsLoader {
     httpRequest.onreadystatechange = () => {
       if (httpRequest.readyState == 4 && httpRequest.status == 200) {
         let response = JSON.parse(httpRequest.responseText);
-        this.displayProducts(response, amountToShow);
+        this.loadedProducts = response;
+        this.displayProducts(amountToShow);
         this.callback();
       }
     };
@@ -27,16 +28,15 @@ export class ProductsLoader {
     httpRequest.send();
   }
 
-  displayProducts(products, amountToShow) {
+  displayProducts(amountToShow) {
     let filteredProducts = [];
     if (this.productsCategory === "all") {
-      filteredProducts = products;
+      filteredProducts = this.loadedProducts;
     } else {
-      filteredProducts = products.filter(
+      filteredProducts = this.loadedProducts.filter(
         (product) => product.category === this.productsCategory
       );
     }
-
     filteredProducts = filteredProducts.slice(0, amountToShow);
 
     const productListHTML = filteredProducts
@@ -53,7 +53,12 @@ export class ProductsLoader {
       })
       .join("");
 
-    this.showProducts(productListHTML);
+    this.showProducts(
+      productListHTML,
+      this.productsCategory === "all"
+        ? "Latest Deals"
+        : `${this.productsCategory}s`
+    );
   }
   // displayProducts(products, amountToShow) {
   //   let productListHTML = "";
