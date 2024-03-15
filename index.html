@@ -168,13 +168,20 @@
                 </div>
             </div>
         </footer>
-        <!-- <div class="chatbot" id="chatbot">
-            <form action="" class="chatbot__form">
+        <div class="chatbot" id="chatbot">
+            <form action="" method="post" class="chatbot__form">
                 <div class="chatbot__answers" id="answers"></div>
-                <input type="text" name="userInput" id="questionInput" class="form-control" />
-                <input type="submit" class="btn btn-primary" value="OK" id="chatbotSubmit" />
+                <div class="chatbot__inputs">
+                    <input type="text" name="userInput" id="questionInput" class="form-control" />
+                    <input type="submit" class="btn btn-outline-light" value="OK" id="chatbotSubmit" />
+                </div>
             </form>
-        </div> -->
+            <button class="btn chatbot__button">
+                <svg class="chatbot__svg">
+                    <use xlink:href='#message'></use>
+                </svg>
+            </button>
+        </div>
         <a class="scroll-top" href="#start">
             <svg class="scroll-top__svg">
                 <use xlink:href='#arrowTop'></use>

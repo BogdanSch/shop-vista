@@ -1,65 +1,96 @@
 "use strict";
 
-const phrases = {
-  main: [
-    "Our manager will call you back soon!",
-    "You can clarify the details by phone at 123456789",
-    "Stay connected!",
-    "Today is a beautiful weather!",
-    "It's very pleasant to communicate with you!",
-  ],
-  hello: "Hey there!",
-  bye: "Glad to talk to you. See you next time!",
-};
+class Chatbot {
+  constructor() {
+    this.phrases = {
+      main: [
+        "Our manager will call you back soon!",
+        "You can clarify the details by phone at 123456789",
+        "Stay connected!",
+        "Today is a beautiful weather!",
+        "It's very pleasant to communicate with you!",
+      ],
+      hello: "Hey there!",
+      bye: "Glad to talk to you. See you next time!",
+      aboutStore:
+        "Our online store offers a wide range of products at competitive prices.",
+      contactInfo:
+        "You can contact us at support@example.com or call us at 123-456-7890.",
+      hoursOfOperation:
+        "Our store is open Monday to Friday from 9:00 AM to 5:00 PM.",
+    };
 
-const questionInput = $("#questionInput");
-const answers = $("#answers");
+    this.chatbotElement = $(".chatbot__form");
+    this.questionInput = $("#questionInput");
+    this.answers = $("#answers");
 
-function displayMessage(user, message) {
-  answers.append(`<div class="answer__${user}">${message}</div>`);
-}
+    this.openChatbotButton = $(".chatbot__button");
 
-displayMessage("bot", phrases.hello);
-// answers.append(`<div class="answer__bot">${hello}</div>`);
+    this.init();
+  }
 
-$("#chatbot").on("click", function (event) {
-  $(this).toggleClass("show");
-});
-$("#questionInput, #chatbotSubmit").on("click", function () {
-  return false;
-});
+  init() {
+    this.displayMessage("bot", this.phrases.hello);
 
-function isEmptyOrSpaces(str) {
-  return str === null || str.match(/^ *$/) !== null;
-}
+    this.openChatbotButton.on("click", () => {
+      this.chatbotElement.toggleClass("show");
+    });
 
-$("#chatbotSubmit").on("click", function () {
-  let question = questionInput.val().trim();
+    $("#questionInput, #chatbotSubmit").on("click", () => {
+      return false;
+    });
 
-  if (!isEmptyOrSpaces(question)) {
-    questionInput.val("");
-    displayMessage("user", question);
+    $("#chatbotSubmit").on("click", () => {
+      let question = this.questionInput.val().trim();
 
-    setTimeout(() => {
-      if (question.toLowerCase().includes("bye")) {
-        displayMessage("user", phrases.bye);
+      if (!this.checkString(question)) {
+        this.questionInput.val("");
+        this.displayMessage("user", question);
+
+        setTimeout(() => {
+          if (question.toLowerCase().includes("bye")) {
+            this.displayMessage("bot", this.phrases.bye);
+          } else if (question.toLowerCase().includes("about")) {
+            this.displayMessage("bot", this.phrases.aboutStore);
+          } else if (question.toLowerCase().includes("contact")) {
+            this.displayMessage("bot", this.phrases.contactInfo);
+          } else if (question.toLowerCase().includes("hours")) {
+            this.displayMessage("bot", this.phrases.hoursOfOperation);
+          } else {
+            const randomIndex = Math.floor(
+              Math.random() * this.phrases.main.length
+            );
+            this.displayMessage("bot", this.phrases.main[randomIndex]);
+          }
+
+          this.chatbotElement.animate(
+            {
+              scrollTop:
+                chatbotElement.scrollHeight - chatbotElement.clientHeight,
+            },
+            10
+          );
+        }, 1000);
       }
+    });
 
-      $("#chatbot").animate(
-        {
-          scrollTop: chatbot.scrollHeight - chatbot.clientHeight,
-        },
-        10
-      );
-    }, 1000);
+    this.questionInput.keypress("keyup", this.enterKey);
   }
-});
 
-function enterKey(event) {
-  if (event.keyCode === 13) {
-    $("#chatbotSubmit").click();
-    return false;
+  displayMessage(user, message) {
+    this.answers.append(`<div class="answers__${user}">${message}</div>`);
+  }
+
+  enterKey(event) {
+    if (event.keyCode === 13) {
+      $("#chatbotSubmit").click();
+      return false;
+    }
+  }
+
+  checkString(str) {
+    return str === null || str.match(/^ *$/) !== null;
   }
 }
 
-questionInput.keypress("keyup", enterKey);
+new Chatbot();
