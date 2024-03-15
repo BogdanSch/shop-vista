@@ -1,3 +1,5 @@
+import { currency } from "./cart-handler.js";
+
 export class Product {
   constructor(id, name, picture, price, amount, category) {
     this.id = id;
@@ -13,7 +15,7 @@ export class Product {
      <img class="products__item-picture" src="${this.picture}" alt="${this.name}">
       <div class="card-body">
         <h3 class="products__item-title card-title">${this.name}</h3>
-        <p>Price: <span class="products__item-price">${this.price}</span>$</p>
+        <p>Price: <span class="products__item-price">${this.price}</span>${currency}</p>
         <p>Category: <span class="products__item-category">${this.category}</span></p>
         <button class="products__add-button btn btn-outline-primary">Add to Cart</button>
       </div>
@@ -29,7 +31,7 @@ export class Product {
           <input type="number" class="form-control amount-input" disabled="" value="${this.amount}" name="amountInput">
           <button class="btn btn-add">+</button> 
       </div>
-      <span class="header__cart-item__price">${this.price}$</span>
+      <span class="header__cart-item__price">${this.price}${currency}</span>
     </li>`;
   }
 }

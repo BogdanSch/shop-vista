@@ -1,66 +1,64 @@
 "use strict";
 
-import { ProductsLoader } from "./modules/product-loader.js";
-import { main } from "./modules/cart-handler.js";
+import { ProductsLoader } from "./modules/products-loader.js";
+import { main, categories, currency } from "./modules/cart-handler.js";
 
-const productsList = document.querySelector(".products__list");
 const body = document.body;
 const productsToGenerateContainer = document.querySelector(
   ".products-container"
 );
+const amountProductsToDisplay = 12;
 
-function showProducts(htmlContent) {
-  productsList.innerHTML = htmlContent;
-}
-
-function generateProductsSection(htmlContent, productsCategory) {
+function generateProductsSection(
+  htmlContent,
+  productsCategory,
+  showStoreButton
+) {
   if (productsToGenerateContainer) {
-    const productsSectionText = `<section class="products mb-5" id="products-${productsCategory}" data-aos="fade-up" data-aos-duration="2000">
+    let productsSectionText = `<section class="products mb-5" id="products-${productsCategory.title}" data-aos="fade-up" data-aos-duration="2000">
     <div class="container">
         <div class="products__wrap">
             <div class="text-content">
-                <h2 class="products__title text-center">${productsCategory}</h2>
-                <p class="products__description text-center">Discover our diverse selection of high-quality
-                    tech products, ranging from cutting-edge smartphones to powerful laptops, designed to
-                    elevate
-                    your digital experience. Explore our curated collection and find the perfect device to
-                    suit your needs and style.</p>
+                <h2 class="products__title text-center">${productsCategory.title}</h2>
+                <p class="products__description text-center">${productsCategory.description}</p>
             </div>
             <div class="products__list mt-5">${htmlContent}</div>
-            <div class="products__more text-center mt-5">
-                <a href="./store.html" class="btn btn-primary btn-lg">Shop More</a>
-            </div>
-        </div>
-    </div>
-</section>`;
+            `;
+    if (showStoreButton) {
+      productsSectionText += `<div class="products__more text-center mt-5"><a href="./store.html" class="btn btn-primary btn-lg">Shop More</a></div>`;
+    }
+    productsSectionText += `</div></div></section>`;
     productsToGenerateContainer.innerHTML += productsSectionText;
   }
 }
 
-if (productsList || productsToGenerateContainer) {
+if (productsToGenerateContainer) {
   let productsLoader = null;
+
   if (body.dataset.svPage === "home") {
     productsLoader = new ProductsLoader(
       "../data/products.json",
-      "all",
-      showProducts,
-      main
-    );
-    productsLoader.loadProducts(12);
-  } else if (body.dataset.svPage === "store") {
-    productsLoader = new ProductsLoader(
-      "../data/products.json",
-      "all",
+      categories.latestDeals,
       generateProductsSection,
       main
     );
-    productsLoader.loadProducts(12);
+    productsLoader.loadProducts(amountProductsToDisplay);
+  } else if (body.dataset.svPage === "store") {
+    productsLoader = new ProductsLoader(
+      "../data/products.json",
+      categories.latestDeals,
+      generateProductsSection,
+      main
+    );
+    productsLoader.loadProducts(amountProductsToDisplay);
 
-    productsLoader.productsCategory = "Laptop";
-    productsLoader.displayProducts(12);
+    productsLoader.productsCategory = categories.laptops;
+    // productsLoader.displayProducts(amountProductsToDisplay);
+    productsLoader.loadProducts(amountProductsToDisplay);
 
-    productsLoader.productsCategory = "Iphone";
-    productsLoader.displayProducts(12);
+    productsLoader.productsCategory = categories.iphones;
+    // productsLoader.displayProducts(amountProductsToDisplay);
+    productsLoader.loadProducts(amountProductsToDisplay);
   }
 } else {
   main();
