@@ -1,4 +1,4 @@
-import { currency } from "./cart-handler.js";
+import { currency } from "../cart-handler.js";
 
 export class Product {
   constructor(id, name, picture, price, amount, category) {

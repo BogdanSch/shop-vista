@@ -1,6 +1,6 @@
 "use strict";
 
-const imagesLoader = () => {
+const imagesLoaderModule = () => {
   const placeholderPath = `https://placehold.co/600x400`;
 
   const images = document.querySelectorAll("img");
@@ -41,4 +41,4 @@ const imagesLoader = () => {
   window.addEventListener("scroll", handleImageChange);
 };
 
-export default imagesLoader;
+export default imagesLoaderModule;

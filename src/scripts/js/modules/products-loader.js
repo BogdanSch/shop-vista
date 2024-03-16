@@ -12,21 +12,6 @@ export class ProductsLoader {
     this.showProducts = showProducts;
     this.callback = callback;
   }
-  // loadProducts(amountToShow) {
-  //   let httpRequest = new XMLHttpRequest();
-
-  //   httpRequest.onreadystatechange = () => {
-  //     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-  //       let response = JSON.parse(httpRequest.responseText);
-  //       this.loadedProducts = response;
-  //       this.displayProducts(amountToShow);
-  //       this.callback();
-  //     }
-  //   };
-
-  //   httpRequest.open("GET", this.productsDataPath, true);
-  //   httpRequest.send();
-  // }
   async loadProducts(amountToShow) {
     try {
       const response = await fetch(this.productsDataPath);

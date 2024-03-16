@@ -93,4 +93,6 @@ class Chatbot {
   }
 }
 
-new Chatbot();
+export default function chatbotModule() {
+  const chatbot = new Chatbot();
+}

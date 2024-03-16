@@ -53,9 +53,6 @@ class Cookie {
     cookieString += `; expires=${expires}`;
     document.cookie = cookieString;
   }
-  get name() {
-    return this.name;
-  }
   deleteCookie() {
     this.setCookie(this.name, "", { expires: new Date(0) });
     delete this.cookies[this.name];
@@ -78,30 +75,40 @@ class Cookie {
   }
 }
 
+class User {
+  constructor(name, email, number, password) {
+    this.name = name;
+    this.email = email;
+    this.number = number;
+    this.password = password;
+  }
+}
+
 class UserManager {
   constructor() {
     this.users = JSON.parse(localStorage.getItem("users")) || [];
   }
 
-  saveUser(user) {
+  addUser(user) {
     this.users.push(user);
     localStorage.setItem("users", JSON.stringify(this.users));
   }
 
-  findUser(username, password) {
+  findUser(email, password) {
     return this.users.find(
-      (user) => user.username === username && user.password === password
+      (user) => user.email === email && user.password === password
     );
   }
 }
 
 const userManager = new UserManager();
+let loginCookie = null;
 
-function signIn(username, password) {
-  let user = userManager.findUser(username, password);
+function signIn(email, password) {
+  let user = userManager.findUser(email, password);
 
   if (user) {
-    const loginCookie = new Cookie("loggedInUser", username, 7);
+    loginCookie = new Cookie("loggedInUser", email, 7);
     console.log("Sign in successful");
     return true;
   } else {
@@ -110,8 +117,10 @@ function signIn(username, password) {
   }
 }
 
-function signUp(username, password) {
-  users.push({ username: username, password: password });
+function signUp(name, email, number, password) {
+  const user = new User(name, email, number, password);
+  userManager.addUser(user);
+  loginCookie = new Cookie("loggedInUser", email, 7);
   console.log("Sign up successful");
 }
 
@@ -124,9 +133,20 @@ function signUp(username, password) {
 
 if (body.dataset.svPage === "sign-in") {
   const signInForm = document.querySelector("#signInForm");
+  signInForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const email = signInForm.querySelector("#inputEmail").value;
+    const password = signInForm.querySelector("#inputPassword").value;
+    return signIn(email, password);
+  });
 } else if (body.dataset.svPage === "sign-up") {
   const signUpForm = document.querySelector("#signUpForm");
   signUpForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    const name = signUpForm.querySelector("#inputName").value;
+    const email = signUpForm.querySelector("#inputEmail").value;
+    const number = signUpForm.querySelector("#inputNumber").value;
+    const password = signUpForm.querySelector("#inputPassword").value;
+    signUp(name, email, number, password);
   });
 }
