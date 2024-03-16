@@ -260,18 +260,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function headerModule() {
-  // const headerOffset = 20;
+  const headerOffset = 20;
 
-  // window.addEventListener("scroll", (event) => {
-  //   const header = $("header");
-  //   if (window.scrollY >= headerOffset) {
-  //     header.addClass("sticky");
-  //   } else {
-  //     if (header.hasClass("sticky")) {
-  //       header.removeClass("sticky");
-  //     }
-  //   }
-  // });
+  window.addEventListener("scroll", (event) => {
+    const header = $("header");
+    if (window.scrollY >= headerOffset) {
+      header.addClass("sticky");
+    } else {
+      if (header.hasClass("sticky")) {
+        header.removeClass("sticky");
+      }
+    }
+  });
 }
 
 

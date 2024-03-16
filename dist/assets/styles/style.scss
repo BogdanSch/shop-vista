@@ -200,17 +200,29 @@ input.form-control {
     flex-wrap: wrap;
   }
   &__logo {
-    text-align: center;
+    @include flex-row();
+    column-gap: 12px;
+    // text-align: center;
     font-size: 28px;
     font-weight: 700;
+
+    &-svg {
+      fill: $white;
+      max-width: 40px;
+    }
   }
   &__menu {
     @include flex-row();
     justify-content: center;
     align-items: center;
-    column-gap: 20px;
+    column-gap: 12px;
 
     .profile {
+      &__link {
+        @include flex-column();
+        justify-content: center;
+        align-items: center;
+      }
       &__img {
         width: 32px;
         height: 32px;
