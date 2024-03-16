@@ -65,7 +65,7 @@ export function cardHandler() {
 
     if (body.dataset.svPage === "home") {
       productsLoader = new ProductsLoader(
-        "../data/products.json",
+        "./data/products.json",
         categories.latestDeals,
         generateProductsSection,
         main
@@ -73,7 +73,7 @@ export function cardHandler() {
       productsLoader.loadProducts(amountProductsToDisplay);
     } else if (body.dataset.svPage === "store") {
       productsLoader = new ProductsLoader(
-        "../data/products.json",
+        "./data/products.json",
         categories.latestDeals,
         generateProductsSection,
         main
@@ -86,8 +86,6 @@ export function cardHandler() {
       productsLoader.productsCategory = categories.iphones;
       productsLoader.loadProducts(amountProductsToDisplay);
     }
-  } else {
-    main();
   }
 }
 

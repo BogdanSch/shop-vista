@@ -2,6 +2,105 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/scripts/js/authentication-handler.js":
+/*!**************************************************!*\
+  !*** ./src/scripts/js/authentication-handler.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _modules_authentication_user_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/authentication/user.js */ "./src/scripts/js/modules/authentication/user.js");
+/* harmony import */ var _modules_authentication_user_manager_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/authentication/user-manager.js */ "./src/scripts/js/modules/authentication/user-manager.js");
+/* harmony import */ var _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/authentication/cookie.js */ "./src/scripts/js/modules/authentication/cookie.js");
+
+
+
+
+
+
+const authenticationHandlerModule = () => {
+  const body = document.body;
+
+  const userManager = new _modules_authentication_user_manager_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+  let loginCookie = null;
+
+  function signIn(email, password) {
+    let user = userManager.findUser(email, password);
+
+    if (user) {
+      loginCookie = new _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"]("loggedInUser", email, 7);
+      console.log("Sign in successful");
+      return true;
+    } else {
+      console.log("Invalid username or password");
+      return false;
+    }
+  }
+
+  function signUp(name, email, number, password) {
+    const user = new _modules_authentication_user_js__WEBPACK_IMPORTED_MODULE_0__["default"](name, email, number, password);
+    userManager.addUser(user);
+    loginCookie = new _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"]("loggedInUser", email, 7);
+    console.log("Sign up successful");
+  }
+
+  // let loggedInUser = CookieManager.getCookie("loggedInUser");
+  // if (loggedInUser) {
+  //   console.log("Logged in user:", loggedInUser);
+  // } else {
+  //   console.log("No user logged in");
+  // }
+  console.log("im working!");
+
+  if (body.dataset.svPage === "sign-in") {
+    const signInForm = document.querySelector("#signInForm");
+    signInForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const email = signInForm.querySelector("#inputEmail").value;
+      const password = signInForm.querySelector("#inputPassword").value;
+      return signIn(email, password);
+    });
+  } else if (body.dataset.svPage === "sign-up") {
+    const signUpForm = document.querySelector("#signUpForm");
+    signUpForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = signUpForm.querySelector("#inputName").value;
+      const email = signUpForm.querySelector("#inputEmail").value;
+      const number = signUpForm.querySelector("#inputNumber").value;
+      const password = signUpForm.querySelector("#inputPassword").value;
+      signUp(name, email, number, password);
+      return true;
+    });
+  } else {
+    if (_modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"].checkCookie(loginCookie?.name)) {
+      $(".header .profile__dropdown").html(
+        `<li><button class="btn brn-log-out dropdown-item">Log out</button></li>`
+      );
+      $(".header .profile__dropdown .brn-log-out").on(
+        "click",
+        function (event) {
+          loginCookie?.deleteCookie();
+        }
+      );
+    } else {
+      $(".header .profile__dropdown")
+        .html(`<li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
+      <li>
+          <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" href="./sign-up.html">Sign up</a></li>`);
+    }
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (authenticationHandlerModule);
+
+
+/***/ }),
+
 /***/ "./src/scripts/js/cart-handler.js":
 /*!****************************************!*\
   !*** ./src/scripts/js/cart-handler.js ***!
@@ -84,7 +183,7 @@ function cardHandler() {
 
     if (body.dataset.svPage === "home") {
       productsLoader = new _modules_products_loader_js__WEBPACK_IMPORTED_MODULE_2__.ProductsLoader(
-        "../data/products.json",
+        "./data/products.json",
         categories.latestDeals,
         generateProductsSection,
         main
@@ -92,7 +191,7 @@ function cardHandler() {
       productsLoader.loadProducts(amountProductsToDisplay);
     } else if (body.dataset.svPage === "store") {
       productsLoader = new _modules_products_loader_js__WEBPACK_IMPORTED_MODULE_2__.ProductsLoader(
-        "../data/products.json",
+        "./data/products.json",
         categories.latestDeals,
         generateProductsSection,
         main
@@ -105,8 +204,6 @@ function cardHandler() {
       productsLoader.productsCategory = categories.iphones;
       productsLoader.loadProducts(amountProductsToDisplay);
     }
-  } else {
-    main();
   }
 }
 
@@ -260,18 +357,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function headerModule() {
-  const headerOffset = 20;
+  // const headerOffset = 20;
 
-  window.addEventListener("scroll", (event) => {
-    const header = $("header");
-    if (window.scrollY >= headerOffset) {
-      header.addClass("sticky");
-    } else {
-      if (header.hasClass("sticky")) {
-        header.removeClass("sticky");
-      }
-    }
-  });
+  // window.addEventListener("scroll", (event) => {
+  //   const header = $("header");
+  //   if (window.scrollY >= headerOffset) {
+  //     header.addClass("sticky");
+  //   } else {
+  //     if (header.hasClass("sticky")) {
+  //       header.removeClass("sticky");
+  //     }
+  //   }
+  // });
 }
 
 
@@ -331,6 +428,109 @@ const imagesLoaderModule = () => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (imagesLoaderModule);
+
+
+/***/ }),
+
+/***/ "./src/scripts/js/modules/authentication/cookie.js":
+/*!*********************************************************!*\
+  !*** ./src/scripts/js/modules/authentication/cookie.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Cookie)
+/* harmony export */ });
+class Cookie {
+  constructor(name, value, expireDate) {
+    this.name = name;
+    this.value = value;
+    this.expireDate = expireDate;
+  }
+  initCookie() {
+    let cookieString = `${this.name}=${this.value}`;
+    const expires = new Date(this.expireDate).toUTCString();
+    cookieString += `; expires=${expires}`;
+    document.cookie = cookieString;
+  }
+  deleteCookie() {
+    this.setCookie(this.name, "", { expires: new Date(0) });
+    delete this.cookies[this.name];
+  }
+  getExistingCookies() {
+    const cookieString = document.cookie;
+    let cookies = {};
+    if (cookieString !== "") {
+      const cookieArray = cookieString.split("; ");
+      cookieArray.forEach((cookie) => {
+        const [name, value] = cookie.split("=");
+        cookies[name] = value;
+      });
+    }
+    return cookies;
+  }
+  static checkCookie(name) {
+    const allCookies = this.getExistingCookies();
+    return allCookies[name] !== null;
+  }
+  static getCookie(name) {
+    const allCookies = this.getExistingCookies();
+    return allCookies[name];
+  }
+}
+
+
+/***/ }),
+
+/***/ "./src/scripts/js/modules/authentication/user-manager.js":
+/*!***************************************************************!*\
+  !*** ./src/scripts/js/modules/authentication/user-manager.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ UserManager)
+/* harmony export */ });
+class UserManager {
+  constructor() {
+    this.users = JSON.parse(localStorage.getItem("users")) || [];
+  }
+
+  addUser(user) {
+    this.users.push(user);
+    localStorage.setItem("users", JSON.stringify(this.users));
+  }
+
+  findUser(email, password) {
+    return this.users.find(
+      (user) => user.email === email && user.password === password
+    );
+  }
+}
+
+
+/***/ }),
+
+/***/ "./src/scripts/js/modules/authentication/user.js":
+/*!*******************************************************!*\
+  !*** ./src/scripts/js/modules/authentication/user.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ User)
+/* harmony export */ });
+class User {
+  constructor(name, email, number, password) {
+    this.name = name;
+    this.email = email;
+    this.number = number;
+    this.password = password;
+  }
+}
 
 
 /***/ }),
@@ -580,6 +780,7 @@ class ProductsLoader {
   async loadProducts(amountToShow) {
     try {
       const response = await fetch(this.productsDataPath);
+      console.log(response);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -751,6 +952,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_images_loader_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/images-loader.js */ "./src/scripts/js/images-loader.js");
 /* harmony import */ var _js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/scroll-top.js */ "./src/scripts/js/scroll-top.js");
 /* harmony import */ var _js_site_loader_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/site-loader.js */ "./src/scripts/js/site-loader.js");
+/* harmony import */ var _js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/authentication-handler.js */ "./src/scripts/js/authentication-handler.js");
+
 
 
 
@@ -759,11 +962,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 AOS.init();
+
 (0,_js_site_loader_js__WEBPACK_IMPORTED_MODULE_5__["default"])();
 (0,_js_chat_bot__WEBPACK_IMPORTED_MODULE_0__["default"])();
 (0,_js_header_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
 (0,_js_images_loader_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
 (0,_js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
+
+(0,_js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
 
 (0,_js_cart_handler_js__WEBPACK_IMPORTED_MODULE_1__.cardHandler)();
 
