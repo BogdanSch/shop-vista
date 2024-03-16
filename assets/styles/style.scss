@@ -117,8 +117,8 @@ p {
   transition: all 0.5s ease-in;
 
   &:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 8px 12px $card-shadow;
+    transform: translateY(-5px);
+    // box-shadow: 0 8px 12px $card-shadow;
   }
 
   &-body {
@@ -130,6 +130,22 @@ p {
     margin-bottom: 0.5rem;
   }
 }
+
+input.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 12px;
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  color: #495057;
+
+  transition: all 0.4s ease-out;
+  &:focus {
+    border-color: transparent !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem $accent-light;
+  }
+}
+
 .text-content {
   display: block;
   max-width: 60%;
@@ -406,6 +422,22 @@ p {
 //FAQS - Start
 /* FAQ Section Styles */
 //FAQS - End
+//Sign In - Start
+.sign-in {
+  &__link {
+    color: $accent;
+    font-weight: 700;
+  }
+}
+//Sign In - End
+//Sign Up - Start
+.sign-up {
+  &__link {
+    color: $accent;
+    font-weight: 700;
+  }
+}
+//Sign Up - End
 //Footer - Start
 .footer {
   margin-top: auto;

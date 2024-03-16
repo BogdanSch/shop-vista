@@ -1,7 +1,7 @@
 "use strict";
 
 import { ProductsLoader } from "./modules/products-loader.js";
-import { main, categories, currency } from "./modules/cart-handler.js";
+import { main, categories } from "./modules/cart-handler.js";
 
 const body = document.body;
 const productsToGenerateContainer = document.querySelector(
