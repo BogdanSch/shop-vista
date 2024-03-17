@@ -450,6 +450,26 @@ input.form-control {
   }
 }
 //Sign Up - End
+//About - Start
+.about {
+  img {
+    display: block;
+    width: 60% !important;
+    margin: 0 auto;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  &__title {
+    margin-top: 20px;
+  }
+  &__features {
+    margin-top: 100px;
+  }
+}
+//Gallery - Start
+.gallery {
+  margin-top: 80px;
+}
 //Footer - Start
 .footer {
   margin-top: auto;

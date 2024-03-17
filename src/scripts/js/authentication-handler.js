@@ -6,19 +6,23 @@ import Cookie from "./modules/authentication/cookie.js";
 
 const authenticationHandlerModule = () => {
   const body = document.body;
+  const loggedInUserCookieName = "loggedInUser";
+  const cookieLifeDuration = new Date() + 2 * 3600000;
 
   const userManager = new UserManager();
   let loginCookie = null;
+
+  if (Cookie.checkCookie(loggedInUserCookieName)) {
+    loginCookie = Cookie.getCookie(loggedInUserCookieName);
+  }
 
   function signIn(email, password) {
     let user = userManager.findUser(email, password);
 
     if (user) {
-      loginCookie = new Cookie("loggedInUser", email, 7);
-      console.log("Sign in successful");
+      loginCookie = new Cookie("loggedInUser", email, cookieLifeDuration);
       return true;
     } else {
-      console.log("Invalid username or password");
       return false;
     }
   }
@@ -26,39 +30,31 @@ const authenticationHandlerModule = () => {
   function signUp(name, email, number, password) {
     const user = new User(name, email, number, password);
     userManager.addUser(user);
-    loginCookie = new Cookie("loggedInUser", email, 7);
-    console.log("Sign up successful");
+    loginCookie = new Cookie("loggedInUser", email, cookieLifeDuration);
   }
 
-  // let loggedInUser = CookieManager.getCookie("loggedInUser");
-  // if (loggedInUser) {
-  //   console.log("Logged in user:", loggedInUser);
-  // } else {
-  //   console.log("No user logged in");
-  // }
-  console.log("im working!");
-
   if (body.dataset.svPage === "sign-in") {
-    const signInForm = document.querySelector("#signInForm");
-    signInForm.addEventListener("submit", (event) => {
+    const signInForm = $("#signInForm");
+    signInForm.on("submit", (event) => {
       event.preventDefault();
-      const email = signInForm.querySelector("#inputEmail").value;
-      const password = signInForm.querySelector("#inputPassword").value;
-      return signIn(email, password);
+      const email = signInForm.find("#inputEmail").val();
+      const password = signInForm.find("#inputPassword").val();
+      if (signIn(email, password)) location.href = "index.html";
+      return false;
     });
   } else if (body.dataset.svPage === "sign-up") {
-    const signUpForm = document.querySelector("#signUpForm");
-    signUpForm.addEventListener("submit", (event) => {
+    const signUpForm = $("#signUpForm");
+    signUpForm.on("submit", (event) => {
       event.preventDefault();
-      const name = signUpForm.querySelector("#inputName").value;
-      const email = signUpForm.querySelector("#inputEmail").value;
-      const number = signUpForm.querySelector("#inputNumber").value;
-      const password = signUpForm.querySelector("#inputPassword").value;
+      const name = signUpForm.find("#inputName").val();
+      const email = signUpForm.find("#inputEmail").val();
+      const number = signUpForm.find("#inputNumber").val();
+      const password = signUpForm.find("#inputPassword").val();
       signUp(name, email, number, password);
-      return true;
+      location.href = "index.html";
     });
   } else {
-    if (Cookie.checkCookie(loginCookie?.name)) {
+    if (loginCookie !== null) {
       $(".header .profile__dropdown").html(
         `<li><button class="btn brn-log-out dropdown-item">Log out</button></li>`
       );

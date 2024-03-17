@@ -3,6 +3,7 @@ export default class Cookie {
     this.name = name;
     this.value = value;
     this.expireDate = expireDate;
+    this.initCookie();
   }
   initCookie() {
     let cookieString = `${this.name}=${this.value}`;
@@ -14,11 +15,13 @@ export default class Cookie {
     this.setCookie(this.name, "", { expires: new Date(0) });
     delete this.cookies[this.name];
   }
-  getExistingCookies() {
+  static getExistingCookies() {
     const cookieString = document.cookie;
+    console.log(document.cookie);
     let cookies = {};
     if (cookieString !== "") {
       const cookieArray = cookieString.split("; ");
+      console.log(cookieArray);
       cookieArray.forEach((cookie) => {
         const [name, value] = cookie.split("=");
         cookies[name] = value;
@@ -32,6 +35,6 @@ export default class Cookie {
   }
   static getCookie(name) {
     const allCookies = this.getExistingCookies();
-    return allCookies[name];
+    return new Cookie(name, allCookies[name]);
   }
 }
