@@ -389,9 +389,11 @@ const imagesLoaderModule = () => {
 
   function setupImages() {
     images.forEach((image) => {
-      const imageSrc = image.getAttribute("src");
-      image.setAttribute("data-img-src", imageSrc);
-      image.setAttribute("src", placeholderPath);
+      if (!image.parentNode.classList.contains("carousel-item")) {
+        const imageSrc = image.getAttribute("src");
+        image.setAttribute("data-img-src", imageSrc);
+        image.setAttribute("src", placeholderPath);
+      }
     });
   }
 
@@ -826,169 +828,6 @@ class ProductsLoader {
 
 /***/ }),
 
-/***/ "./src/scripts/js/modules/rc-slider/main.js":
-/*!**************************************************!*\
-  !*** ./src/scripts/js/modules/rc-slider/main.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _slider_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider.js */ "./src/scripts/js/modules/rc-slider/slider.js");
-/* 
-RC Slider
-Version: 1.0
-This plugin doesn't require any extra library
-*/
-
-
-
-const app = (sliderConfig) => {
-  const slider = new _slider_js__WEBPACK_IMPORTED_MODULE_0__.Slider(sliderConfig);
-  slider.init();
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (app);
-
-
-/***/ }),
-
-/***/ "./src/scripts/js/modules/rc-slider/slider.js":
-/*!****************************************************!*\
-  !*** ./src/scripts/js/modules/rc-slider/slider.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Slider: () => (/* binding */ Slider)
-/* harmony export */ });
-class Slider {
-  constructor(config) {
-    this.imagePathes = config.imagePathes;
-    this.currentSlide = 0;
-    this.timer;
-    this.effect = "none";
-    this.allEffects = [];
-    this.animationDuration = config.animationDuration;
-    this.autoplayDuration = config.autoplayDuration;
-    this.showMiniatures = config.showMiniatures;
-
-  }
-  init() {
-    this.sliderImage = document.getElementById("sliderImage");
-    this.nextButton = document.getElementById("next");
-    this.previousButton = document.getElementById("prev");
-    this.startSlideshowButton = document.getElementById("start");
-    this.stopSlideshowButton = document.getElementById("stop");
-    this.effectsForm = document.forms.effects;
-    this.miniaturesContainer = document.querySelector(".slider__minies");
-    this.miniatures = [];
-
-    for (let i = 0; i < this.effectsForm.length; i++) {
-      this.allEffects.push(this.effectsForm[i].value);
-      this.effectsForm[i].addEventListener("change", (event) => {
-        this.clearEffects();
-        if (this.effectsForm[i].checked) {
-          this.effect = this.effectsForm[i].value;
-        }
-      });
-    }
-
-    this.nextButton.addEventListener("click", () => this.showNextSlide());
-    this.previousButton.addEventListener("click", () =>
-      this.showPreviousSlide()
-    );
-    this.startSlideshowButton.addEventListener("click", () =>
-      this.startSlideshow()
-    );
-    this.stopSlideshowButton.addEventListener("click", () =>
-      this.stopSlideshow()
-    );
-
-    if (this.showMiniatures) {
-      this.generateMiniatures();
-
-      this.miniatures.forEach((miniature) => {
-        miniature.addEventListener("click", (event) =>
-          this.showNextSlideByMiniature(event)
-        );
-      });
-    }
-  }
-
-  addEffect() {
-    this.sliderImage.classList.add(this.effect);
-  }
-
-  clearEffects() {
-    for (const effect of this.allEffects) {
-      this.sliderImage.classList.remove(effect);
-    }
-  }
-
-  startSlideshow() {
-    this.stopSlideshow();
-    this.timer = setInterval(() => this.showNextSlide(), this.autoplayDuration);
-  }
-
-  stopSlideshow() {
-    clearInterval(this.timer);
-  }
-
-  showNextSlide() {
-    this.addEffect();
-    setTimeout(() => {
-      this.currentSlide++;
-      if (this.currentSlide >= this.imagePathes.length) {
-        this.currentSlide = 0;
-      }
-      this.sliderImage.src = this.imagePathes[this.currentSlide];
-    }, this.animationDuration / 2);
-    setTimeout(() => this.clearEffects(), this.animationDuration);
-  }
-
-  showPreviousSlide() {
-    this.addEffect();
-    setTimeout(() => {
-      this.currentSlide--;
-      if (this.currentSlide < 0) {
-        this.currentSlide = this.imagePathes.length - 1;
-      }
-      this.sliderImage.src = this.imagePathes[this.currentSlide];
-    }, this.animationDuration / 2);
-    setTimeout(() => this.clearEffects(), this.animationDuration);
-  }
-
-  generateMiniatures() {
-    for (let i = 0; i < this.imagePathes.length; i++) {
-      const imageFullName = this.imagePathes[i].split("/")[2];
-      const image = document.createElement("img");
-      image.src = this.imagePathes[i];
-      image.alt = imageFullName;
-      image.className = "mini";
-      image.setAttribute("data-sl-img", imageFullName);
-      this.miniaturesContainer.appendChild(image);
-      this.miniatures.push(image);
-    }
-  }
-
-  showNextSlideByMiniature(event) {
-    let imageMini = event.target;
-    let imageFullName = imageMini.getAttribute("data-sl-img");
-    this.addEffect();
-    setTimeout(() => this.clearEffects(), this.animationDuration);
-    setTimeout(() => {
-      this.sliderImage.src = `./images/${imageFullName}`;
-    }, this.animationDuration / 2);
-  }
-}
-
-
-/***/ }),
-
 /***/ "./src/scripts/js/scroll-top.js":
 /*!**************************************!*\
   !*** ./src/scripts/js/scroll-top.js ***!
@@ -1040,41 +879,6 @@ const siteLoaderModule = () => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (siteLoaderModule);
-
-
-/***/ }),
-
-/***/ "./src/scripts/js/slider-config.js":
-/*!*****************************************!*\
-  !*** ./src/scripts/js/slider-config.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _modules_rc_slider_main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/rc-slider/main.js */ "./src/scripts/js/modules/rc-slider/main.js");
-
-
-
-
-const sliderModule = () => {
-  const sliderConfig = {
-    imagePathes: [
-      "./assets/images/store-open.jpg",
-      "./assets/images/conversations.jpg",
-      "./assets/images/customer-service.jpg",
-      "./assets/images/laptop-typing.jpg",
-    ],
-    showMiniatures: false,
-    animationDuration: 1000,
-    autoplayDuration: 3000,
-  };
-  (0,_modules_rc_slider_main_js__WEBPACK_IMPORTED_MODULE_0__["default"])(sliderConfig);
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sliderModule);
 
 
 /***/ })
@@ -1149,8 +953,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/scroll-top.js */ "./src/scripts/js/scroll-top.js");
 /* harmony import */ var _js_site_loader_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/site-loader.js */ "./src/scripts/js/site-loader.js");
 /* harmony import */ var _js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/authentication-handler.js */ "./src/scripts/js/authentication-handler.js");
-/* harmony import */ var _js_slider_config_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/slider-config.js */ "./src/scripts/js/slider-config.js");
-
 
 
 
@@ -1166,7 +968,6 @@ AOS.init();
 (0,_js_header_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
 (0,_js_images_loader_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
 (0,_js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
-(0,_js_slider_config_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
 
 (0,_js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
 

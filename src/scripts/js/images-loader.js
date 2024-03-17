@@ -7,9 +7,11 @@ const imagesLoaderModule = () => {
 
   function setupImages() {
     images.forEach((image) => {
-      const imageSrc = image.getAttribute("src");
-      image.setAttribute("data-img-src", imageSrc);
-      image.setAttribute("src", placeholderPath);
+      if (!image.parentNode.classList.contains("carousel-item")) {
+        const imageSrc = image.getAttribute("src");
+        image.setAttribute("data-img-src", imageSrc);
+        image.setAttribute("src", placeholderPath);
+      }
     });
   }
 

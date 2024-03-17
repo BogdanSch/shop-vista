@@ -1,45 +1,236 @@
-<main class="main" id="main">
-    <section class="faq mt-5 mb-5">
-        <div class="container">
-            <div class="faq__wrap">
-                <h2 class="faq__title text-center mb-5">Frequently Asked Questions</h2>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Question 1: How can I track my order?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                Answer 1: You can easily track your order by logging into your account and
-                                navigating
-                                to the 'Orders' section. There, you'll find detailed information about the
-                                status
-                                of your order and its shipment tracking number.
-                            </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Vista - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
+</head>
+
+<body data-sv-page="home">
+    <div class="wrapper" id="start">
+        <div class="loader">
+            <div class="loader__wrapper"></div>
+        </div>
+        <header class="header p-3 bg-dark text-light">
+            <div class="container">
+                <div class="header__wrap">
+                    <a href="/"
+                        class="header__logo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <svg class="header__logo-svg">
+                            <use xlink:href='#palette'></use>
+                        </svg>
+                        ShopVista
+                    </a>
+
+                    <div class="header__menu">
+                        <nav class="header__list nav justify-content-center">
+                            <li class="header__item active"><a href="/" class="nav-link px-2">Home</a></li>
+                            <li class="header__item"><a href="./store.html" class="nav-link px-2">Store</a>
+                            </li>
+                            <li class="header__item"><a href="./about.html" class="nav-link px-2">About</a>
+                            </li>
+                            <li class="header__item"><a href="./contacts.html" class="nav-link px-2">Contact</a>
+                            </li>
+                        </nav>
+                        <div class="header__cart">
+                            <svg class="shopping-cart">
+                                <use xlink:href='#basketShopping'></use>
+                            </svg>
+                            <ul class="header__cart-list">
+                                <div class="items-list">
+                                    Nothing yet to buy...
+                                </div>
+                                <div class="items-data mt-3">
+                                    <button type="button" class="btn btn-danger btn-clear" id="clearCartButton">Clear
+                                        the cart</button>
+                                    <a class="btn btn-success btn-clear" href="./check-out.html"
+                                        id="clearCartButton">Check
+                                        out</a>
+                                    <span class="items-total-price">
+                                        0$
+                                    </span>
+                                </div>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Question 2: Do you offer international shipping?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                Answer 2: Yes, we provide international shipping services to various countries
-                                worldwide. However, please note that shipping fees and delivery times may vary
-                                depending on your location and the shipping method selected during checkout.
-                            </div>
+                        <div class="profile dropdown text-end">
+                            <a href="#" class="profile__link link-dark text-decoration-none dropdown-toggle" id="user"
+                                data-bs-toggle="dropdown">
+                                <svg class="profile__img">
+                                    <use xlink:href='#userProfile'></use>
+                                </svg>
+                            </a>
+                            <ul class="profile__dropdown dropdown-menu text-small">
+                                <li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="./sign-up.html">Sign up</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </header>
+        <main class="main">
+            <section class="faq mt-5 mb-5">
+                <div class="container">
+                    <div class="faq__wrap">
+                        <h2 class="faq__title text-center mb-5">Frequently Asked Questions</h2>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Question 1: How can I track my order?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Answer 1: You can easily track your order by logging into your account and
+                                        navigating
+                                        to the 'Orders' section. There, you'll find detailed information about the
+                                        status
+                                        of your order and its shipment tracking number.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Question 2: Do you offer international shipping?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Answer 2: Yes, we provide international shipping services to various countries
+                                        worldwide. However, please note that shipping fees and delivery times may vary
+                                        depending on your location and the shipping method selected during checkout.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="contact mt-5 mb-5">
+                <div class="container">
+                    <div class="contact__form">
+                        <h2 class="contact__title text-center mb-5">Contact Us</h2>
+                        <form action="#" method="POST" class="row g-3">
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="question" class="form-label">Your Question</label>
+                                <textarea class="form-control" id="question" name="question" rows="5"
+                                    required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer bg-dark">
+            <div class="container">
+                <div class="footer__wrap d-flex flex-wrap justify-content-between align-items-center py-3">
+                    <div class="col-md-4 d-flex align-items-center justify-content-start flex-wrap">
+                        <a href="/" class="mb-3 me-2 mb-md-0 text-decoration-none lh-1 text-white">
+                            ShopVista
+                        </a>
+                        <span class="mb-3 mb-md-0 text-light">©2023 Company, Inc</span>
+                    </div>
+                    <ul class="footer__list nav col-md-4 justify-content-end">
+                        <li class="footer__list-item active"><a href="/" class="nav-link px-2">Home</a></li>
+                        <li class="footer__list-item"><a href="#" class="nav-link px-2">Store</a></li>
+                        <li class="footer__list-item"><a href="./about.html" class="nav-link px-2">About</a></li>
+                        <li class="footer__list-item"><a href="./contacts.html" class="nav-link px-2">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <div class="chatbot" id="chatbot">
+            <form action="" method="post" class="chatbot__form">
+                <div class="chatbot__answers" id="answers"></div>
+                <div class="chatbot__inputs">
+                    <input type="text" name="userInput" id="questionInput" class="form-control" />
+                    <input type="submit" class="btn btn-outline-light" value="OK" id="chatbotSubmit" />
+                </div>
+            </form>
+            <button class="btn chatbot__button">
+                <svg class="chatbot__svg">
+                    <use xlink:href='#message'></use>
+                </svg>
+            </button>
         </div>
-    </section>
-</main>
+        <a class="scroll-top" href="#start">
+            <svg class="scroll-top__svg">
+                <use xlink:href='#arrowTop'></use>
+            </svg>
+        </a>
+    </div>
+    <svg style="display: none;">
+        <symbol id="basketShopping" viewBox="0 0 576 512">
+            <g>
+                <path
+                    d="M253.3 35.1c6.1-11.8 1.5-26.3-10.2-32.4s-26.3-1.5-32.4 10.2L117.6 192H32c-17.7 0-32 14.3-32 32s14.3 32 32 32L83.9 463.5C91 492 116.6 512 146 512H430c29.4 0 55-20 62.1-48.5L544 256c17.7 0 32-14.3 32-32s-14.3-32-32-32H458.4L365.3 12.9C359.2 1.2 344.7-3.4 332.9 2.7s-16.3 20.6-10.2 32.4L404.3 192H171.7L253.3 35.1zM192 304v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16zm96-16c8.8 0 16 7.2 16 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16zm128 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+            </g>
+        </symbol>
+        <symbol id="arrowTop" viewBox="0 0 384 512">
+            <g>
+                <path
+                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+            </g>
+        </symbol>
+        <symbol id="userProfile" viewBox="0 0 448 512">
+            <g>
+                <path
+                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z" />
+            </g>
+        </symbol>
+        <symbol id="message" viewBox="0 0 512 512">
+            <g>
+                <path
+                    d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z" />
+            </g>
+        </symbol>
+        <symbol id="palette" viewBox="0 0 512 512">
+            <g>
+                <path
+                    d="M512 256c0 .9 0 1.8 0 2.7c-.4 36.5-33.6 61.3-70.1 61.3H344c-26.5 0-48 21.5-48 48c0 3.4 .4 6.7 1 9.9c2.1 10.2 6.5 20 10.8 29.9c6.1 13.8 12.1 27.5 12.1 42c0 31.8-21.6 60.7-53.4 62c-3.5 .1-7 .2-10.6 .2C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+            </g>
+        </symbol>
+    </svg>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./assets/scripts/lib/jquery-3.7.1.slim.min.js"></script>
+    <script src="./assets/scripts/bundle.js"></script>
+</body>
+
+</html>

@@ -71,6 +71,14 @@ p {
   color: $dark-light;
 }
 
+img {
+  display: block;
+  width: 56% !important;
+  margin: 0 auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
 .main {
   flex: 1;
   @include flex-column();
@@ -452,23 +460,39 @@ input.form-control {
 //Sign Up - End
 //About - Start
 .about {
-  img {
-    display: block;
-    width: 60% !important;
-    margin: 0 auto;
-    border-radius: 4px;
-    object-fit: cover;
-  }
   &__title {
     margin-top: 20px;
   }
-  &__features {
-    margin-top: 100px;
+}
+//About-Features - Start
+.about-features {
+  margin-top: 120px;
+  &__card {
+    text-align: center;
+    i {
+      font-size: 52px;
+      color: $accent;
+    }
+  }
+  &__list {
+    list-style: none;
+    padding-left: 0;
   }
 }
 //Gallery - Start
 .gallery {
-  margin-top: 80px;
+  margin-top: 140px;
+  .carousel {
+    &-image {
+      filter: brightness(70%);
+    }
+    &-caption {
+      h5,
+      p {
+        color: $white;
+      }
+    }
+  }
 }
 //Footer - Start
 .footer {

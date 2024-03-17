@@ -9,7 +9,6 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/styles/slider.css">
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
@@ -88,43 +87,64 @@
                     <div class="about__wrap mb-5">
                         <div class="text-center">
                             <img src="./assets/images/St-Sophia-Cathedral.avif" alt="Saint Sophia Cathedral Image">
-                            <h2 class="about__title text-center">About Us</h2>
-                        </div>
-                        <div class="about__features">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h3 class="about__subtitle">Our Mission</h3>
-                                    <p>At ShopVista, our mission is to provide customers with high-quality products and
-                                        excellent service, ensuring a seamless shopping experience.</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <h3 class="about__subtitle">Our Vision</h3>
-                                    <p>Our vision is to become a leading online retailer known for innovation,
-                                        reliability,
-                                        and customer satisfaction. We strive to exceed expectations and set new
-                                        standards in
-                                        the e-commerce industry.</p>
-                                </div>
+                            <div class="text-content text-center">
+                                <h2 class="about__title">About Us</h2>
+                                <p class="about__description">
+                                    Welcome to Shop Vista, your one-stop destination for all your shopping needs! At
+                                    Shop Vista, we pride ourselves on offering a wide range of high-quality products,
+                                    from fashion and electronics to home decor and beyond. Our mission is to provide our
+                                    customers with the best shopping experience possible, with a focus on convenience,
+                                    affordability, and exceptional customer service.
+                                </p>
+                                <a href="#aboutFeatures" class="btn btn-outline-primary">Read More</a>
                             </div>
-                            <div class="row mt-5">
-                                <div class="col-md-6">
-                                    <h3 class="about__subtitle">Our Team</h3>
-                                    <ul>
-                                        <li>Bohdan Shcherbak - CEO</li>
-                                        <li>Jane Smith - COO</li>
-                                        <li>Mark Johnson - CFO</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <h3 class="about__subtitle">Contact Us</h3>
-                                    <address>
-                                        <strong>Shop Vista</strong><br>
-                                        123 Main Street<br>
-                                        City, State ZIP<br>
-                                        <abbr title="Phone">P:</abbr> (123) 456-7890
-                                    </address>
-                                    <a href="./contacts.html" class="btn btn-primary">Contact us now!</a>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="about-features" id="aboutFeatures">
+                <div class="container">
+                    <div class="about-features__wrap">
+                        <h2 class="about-features__title text-center mb-3">About The Company</h2>
+                        <div class="row">
+                            <div class="about-features__card col-md-6">
+                                <i class="bi bi-bar-chart-line"></i>
+                                <h3 class="about-features__title">Our Mission</h3>
+                                <p class="about-features__description">At ShopVista, our mission is to provide
+                                    customers with high-quality products and
+                                    excellent service, ensuring a seamless shopping experience.</p>
+                            </div>
+                            <div class="about-features__card col-md-6">
+                                <i class="bi bi-sunglasses"></i>
+                                <h3 class="about-features__title">Our Vision</h3>
+                                <p class="about-features__description">Our vision is to become a leading online
+                                    retailer known for innovation,
+                                    reliability,
+                                    and customer satisfaction. We strive to exceed expectations and set new
+                                    standards in
+                                    the e-commerce industry.</p>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="about-features__card col-md-6">
+                                <i class="bi bi-award-fill"></i>
+                                <h3 class="about-features__title">Our Team</h3>
+                                <ul class="about-features__list">
+                                    <li class="about-features__item">Bohdan Shcherbak - CEO</li>
+                                    <li class="about-features__item">Jane Smith - COO</li>
+                                    <li class="about-features__item">Mark Johnson - CFO</li>
+                                </ul>
+                            </div>
+                            <div class="about-features__card col-md-6">
+                                <i class="bi bi-journals"></i>
+                                <h3 class="about-features__title">Contact Us</h3>
+                                <address>
+                                    <strong>Shop Vista</strong><br>
+                                    123 Main Street<br>
+                                    Kharkiv, 1111BS<br>
+                                    <abbr title="Phone">P:</abbr> +380 (50) 456-7890
+                                </address>
+                                <a href="./contacts.html" class="btn btn-primary">Contact us now!</a>
                             </div>
                         </div>
                     </div>
@@ -133,49 +153,65 @@
             <section class="gallery">
                 <div class="container">
                     <div class="gallery__wrap">
-                        <div class="text-center">
-                            <h2 class="gallery__title text-center">Gallery</h2>
+                        <h2 class="gallery__title text-center">Gallery</h2>
+                        <div id="carouselGallery" class="carousel slide mt-5 mb-5">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="./assets/images/store-open.jpg" class="carousel-image d-block w-100"
+                                        alt="Store Open">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Welcome to ShopVista!</h5>
+                                        <p>Explore our wide range of products and enjoy a seamless shopping experience.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./assets/images/conversations.jpg" class="carousel-image d-block w-100"
+                                        alt="Customer Conversations">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Engage with our Community</h5>
+                                        <p>Join the conversation and share your experiences with fellow shoppers.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./assets/images/customer-service.jpg" class="carousel-image d-block w-100"
+                                        alt="Customer Service">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Exceptional Customer Service</h5>
+                                        <p>Our dedicated team is here to assist you every step of the way.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./assets/images/laptop-typing.jpg" class="carousel-image d-block w-100"
+                                        alt="Laptop Typing">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Seamless Online Experience</h5>
+                                        <p>Shop anytime, anywhere with our user-friendly online platform.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselGallery"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselGallery"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <div class="mt-5 slider d-flex flex-column justify-content-center align-items-center">
-                            <div id="wrap" class="text-center">
-                                <img id="sliderImage" class="slider__image" src="./assets/images/store-open.jpg">
-                            </div>
-                            <div class="slider__minies mt-1">
-                            </div>
-                            <div class="slider__arrows text-center mt-2">
-                                <button id="prev" class="btn btn-outline-info">&lt;</button>
-                                <button id="next" class="btn btn-outline-info">&gt;</button>
-                            </div>
-                            <div class="slider__buttons text-center mt-2">
-                                <button id="start" class="btn btn-outline-primary">Start</button>
-                                <button id="stop" class="btn btn-outline-primary">Stop</button>
-                            </div>
-                            <form class="slider__effects effects-form mt-5 mb-5 text-center" action="" method="dialog"
-                                name="effects">
-                                <h2 class="effcts-form__title">Effects Form</h2>
-                                <div class="form-check">
-                                    <input type="radio" name="effect" value="none" class="form-check-input"
-                                        id="effectNone" checked />
-                                    <label class="form-check-label" for="effectNone">
-                                        Effect none
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="radio" name="effect" value="go" class="form-check-input"
-                                        id="effectGo" />
-                                    <label class="form-check-label" for="effectGo">
-                                        Effect go
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="radio" name="effect" value="fade" class="form-check-input"
-                                        id="effectFade" />
-                                    <label class="form-check-label" for="effectFade">
-                                        Effect fade
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
+
                     </div>
                 </div>
             </section>
