@@ -2,6 +2,78 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/jquery.maskedinput/gruntfile.js":
+/*!******************************************************!*\
+  !*** ./node_modules/jquery.maskedinput/gruntfile.js ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+
+
+module.exports = function( grunt ) {
+  grunt.initConfig({
+    // TODO: change to read component.json
+    pkg: __webpack_require__(/*! ./package.json */ "./node_modules/jquery.maskedinput/package.json"),
+
+    uglify: {
+      options: {
+        banner: '/*\n    <%= pkg.description %>\n    Copyright (c) 2007 - <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n    Licensed under the MIT license (http://digitalbush.com/projects/masked-input-plugin/#license)\n    Version: <%= pkg.version %>\n*/\n'
+      },
+
+      dev: {
+        options: {
+          beautify: true,
+          mangle: false
+        },
+
+        files: {
+          'dist/jquery.maskedinput.js': ['src/jquery.maskedinput.js']
+        }
+      },
+
+      min: {
+        files: {
+          'dist/jquery.maskedinput.min.js': ['src/jquery.maskedinput.js']
+        }
+      }
+    },
+
+    jasmine: {
+      full: {
+        src: "src/**/*.js",
+        options: {
+          specs: "spec/*[S|s]pec.js",
+          vendor: [
+            "spec/lib/matchers.js",
+            "spec/lib/jasmine-species/jasmine-grammar.js",
+            "spec/lib/setup.js",
+            "lib/jquery-1.9.0.min.js",
+            "spec/lib/jquery.keymasher.js"
+          ]
+        }
+      }
+    },
+    nugetpack: {
+        dist: {
+            src: 'jquery.maskedinput.nuspec',
+            dest: 'dist/'
+        }
+    }
+  });
+
+  grunt.loadNpmTasks("grunt-contrib-jasmine");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks('grunt-nuget');
+
+  grunt.registerTask('test', ['jasmine']);
+  grunt.registerTask('pack', ['default','nugetpack']);
+  grunt.registerTask('default', ['test', 'uglify']);
+};
+
+
+/***/ }),
+
 /***/ "./src/scripts/js/authentication-handler.js":
 /*!**************************************************!*\
   !*** ./src/scripts/js/authentication-handler.js ***!
@@ -337,6 +409,23 @@ function chatbotModule() {
   const chatbot = new Chatbot();
 }
 
+
+/***/ }),
+
+/***/ "./src/scripts/js/contact-form.js":
+/*!****************************************!*\
+  !*** ./src/scripts/js/contact-form.js ***!
+  \****************************************/
+/***/ (() => {
+
+
+
+(function ($, undefined) {
+    const userPhone = $(".contact__form #phone");
+    if (userPhone) {
+        userPhone.mask("+31 (0) 999 999 999", { placeholder: " " });
+    }
+})(jQuery);
 
 /***/ }),
 
@@ -881,6 +970,16 @@ const siteLoaderModule = () => {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (siteLoaderModule);
 
 
+/***/ }),
+
+/***/ "./node_modules/jquery.maskedinput/package.json":
+/*!******************************************************!*\
+  !*** ./node_modules/jquery.maskedinput/package.json ***!
+  \******************************************************/
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('{"name":"jquery.maskedinput","version":"1.4.1","author":"Josh Bush (digitalbush.com)","description":"jQuery Masked Input Plugin","devDependencies":{"grunt":"0.4.x","grunt-contrib-jasmine":"0.5.x","grunt-contrib-uglify":"0.2.x","grunt-contrib-watch":"0.5.x","grunt-nuget":"^0.1.4"},"scripts":{"test":"grunt test"},"main":"gruntfile.js","repository":{"type":"git","url":"git+https://github.com/excellalabs/jquery.maskedinput.git"},"keywords":["jQuery","Masked","Input","Plugin"],"license":"MIT","bugs":{"url":"https://github.com/excellalabs/jquery.maskedinput/issues"},"homepage":"https://github.com/excellalabs/jquery.maskedinput#readme"}');
+
 /***/ })
 
 /******/ 	});
@@ -910,6 +1009,18 @@ const siteLoaderModule = () => {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -953,6 +1064,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/scroll-top.js */ "./src/scripts/js/scroll-top.js");
 /* harmony import */ var _js_site_loader_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/site-loader.js */ "./src/scripts/js/site-loader.js");
 /* harmony import */ var _js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/authentication-handler.js */ "./src/scripts/js/authentication-handler.js");
+/* harmony import */ var _js_contact_form_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/contact-form.js */ "./src/scripts/js/contact-form.js");
+/* harmony import */ var _js_contact_form_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_js_contact_form_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var jquery_maskedinput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jquery.maskedinput */ "./node_modules/jquery.maskedinput/gruntfile.js");
+/* harmony import */ var jquery_maskedinput__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(jquery_maskedinput__WEBPACK_IMPORTED_MODULE_8__);
+
+
 
 
 
@@ -969,9 +1086,11 @@ AOS.init();
 (0,_js_images_loader_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
 (0,_js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
 
-(0,_js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
+_js_contact_form_js__WEBPACK_IMPORTED_MODULE_7___default()();
 
+(0,_js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
 (0,_js_cart_handler_js__WEBPACK_IMPORTED_MODULE_1__.cardHandler)();
+
 
 })();
 
