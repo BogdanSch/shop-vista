@@ -24,67 +24,67 @@
         <header class="header bg-dark text-light">
             <div class="container">
                 <div class="header__wrap">
-                    <a href="/"
-                        class="header__logo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <a href="/dist/" class="header__logo d-flex align-items-center mb-2 mb-lg-0">
+                        <svg class="header__logo-svg">
+                            <use xlink:href='#palette'></use>
+                        </svg>
                         ShopVista
                     </a>
                     <div class="header__menu">
                         <nav class="header__list nav justify-content-center">
-                            <li class="header__item active"><a href="/" class="nav-link px-2">Home</a></li>
-                            <li class="header__item"><a href="./store.html" class="nav-link px-2">Store</a>
-                            </li>
+                            <li class="header__item"><a href="/dist/" class="nav-link px-2">Home</a></li>
                             <li class="header__item"><a href="./about.html" class="nav-link px-2">About</a>
                             </li>
-                            <li class="header__item"><a href="./blog.html" class="nav-link px-2">Blog</a></li>
-                            <li class="header__item"><a href="./faqs.html" class="nav-link px-2">FAQs</a>
+                            <li class="header__item"><a href="./store.html" class="nav-link px-2">Store</a>
+                            </li>
+                            <li class="header__item"><a href="./contacts.html" class="nav-link px-2">Contacts</a>
                             </li>
                         </nav>
-                        <div class="header__cart">
-                            <svg class="shopping-cart">
-                                <use xlink:href='#basketShopping'></use>
-                            </svg>
-                            <ul class="header__cart-list">
-                                <div class="items-list">
-                                    Nothing yet to buy...
-                                </div>
-                                <div class="items-data mt-3">
-                                    <button type="button" class="btn btn-danger btn-clear" id="clearCartButton">Clear
-                                        the cart</button>
-                                    <a class="btn btn-success btn-clear" href="./check-out.html"
-                                        id="clearCartButton">Check
-                                        out</a>
-                                    <span class="items-total-price">
-                                        0$
-                                    </span>
-                                </div>
-                            </ul>
-                        </div>
-                        <div class="profile dropdown text-end">
-                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="user"
-                                data-bs-toggle="dropdown">
-                                <svg class="profile__img">
-                                    <use xlink:href='#userProfile'></use>
+                        <div class="header__tools">
+                            <div class="header__cart">
+                                <svg class="shopping-cart">
+                                    <use xlink:href='#basketShopping'></use>
                                 </svg>
-                            </a>
-                            <ul class="profile__dropdown dropdown-menu text-small">
-                                <li><a class="dropdown-item" href="#">Sign in</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign up</a></li>
-                            </ul>
+                                <ul class="header__cart-list">
+                                    <div class="items-list">
+                                        Nothing yet to buy...
+                                    </div>
+                                    <div class="items-data mt-3">
+                                        <button type="button" class="btn btn-danger btn-clear"
+                                            id="clearCartButton">Clear the cart</button>
+                                        <a class="btn btn-success btn-clear" href="./check-out.html"
+                                            id="clearCartButton">Check out</a>
+                                        <span class="items-total-price">0$</span>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="profile dropdown text-end">
+                                <a href="#" class="profile__link link-dark text-decoration-none dropdown-toggle"
+                                    id="user" data-bs-toggle="dropdown">
+                                    <svg class="profile__img">
+                                        <use xlink:href='#userProfile'></use>
+                                    </svg>
+                                </a>
+                                <ul class="profile__dropdown dropdown-menu text-small">
+                                    <li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="./sign-up.html">Sign up</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
         <main class="main">
-            <section class="hero" data-aos="fade-up" data-aos-duration="2000">
+            <section class="hero hero-store" data-aos="fade-up" data-aos-duration="2000">
                 <div class="container">
                     <div class="hero__wrap">
-                        <h1 class="hero__title text-center">Welcome to our Tech Store</h1>
-                        <p class="hero__description text-center">Explore the latest collection of phones and laptops
-                            from top brands</p>
+                        <h1 class="hero__title text-center">Our Tech Store</h1>
+                        <p class="hero__description text-center">Here you can explore the latest collection of phones
+                            and laptops from top brands</p>
                     </div>
                 </div>
             </section>

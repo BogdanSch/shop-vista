@@ -311,7 +311,7 @@ textarea.form-control {
       border: 1px solid $dark-border;
       border-radius: 16px;
       z-index: 100;
-      min-width: 400px;
+      min-width: 460px;
       pointer-events: none;
 
       .items {
@@ -381,13 +381,16 @@ textarea.form-control {
   padding-top: 200px;
   padding-bottom: 200px;
   width: 100%;
-
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
     url("../images/store.avif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  &-store{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
+      url("../images/yaroslav-romanenko-7YkwadIk2v8-unsplash.jpg");
+  }
 
   &__title {
     color: $white;
@@ -430,6 +433,9 @@ textarea.form-control {
 }
 //Products - Start
 .products {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
   &__list {
     @include flex-row();
     justify-content: center;
@@ -631,7 +637,7 @@ textarea.form-control {
   height: 50px;
   padding: 16px;
   bottom: 20px;
-  right: 90px;
+  left: 40px;
   background-color: $accent;
   border-radius: 8px;
   cursor: pointer;
