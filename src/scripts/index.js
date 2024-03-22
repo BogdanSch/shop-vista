@@ -6,7 +6,6 @@ import scrollTopModule from "./js/scroll-top.js";
 import siteLoaderModule from "./js/site-loader.js";
 import authenticationHandlerModule from "./js/authentication-handler.js";
 import contactFormModule from "./js/contact-form.js"
-import 'jquery.maskedinput';
 
 AOS.init();
 

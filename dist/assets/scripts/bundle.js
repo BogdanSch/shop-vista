@@ -2,78 +2,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/jquery.maskedinput/gruntfile.js":
-/*!******************************************************!*\
-  !*** ./node_modules/jquery.maskedinput/gruntfile.js ***!
-  \******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-
-
-module.exports = function( grunt ) {
-  grunt.initConfig({
-    // TODO: change to read component.json
-    pkg: __webpack_require__(/*! ./package.json */ "./node_modules/jquery.maskedinput/package.json"),
-
-    uglify: {
-      options: {
-        banner: '/*\n    <%= pkg.description %>\n    Copyright (c) 2007 - <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n    Licensed under the MIT license (http://digitalbush.com/projects/masked-input-plugin/#license)\n    Version: <%= pkg.version %>\n*/\n'
-      },
-
-      dev: {
-        options: {
-          beautify: true,
-          mangle: false
-        },
-
-        files: {
-          'dist/jquery.maskedinput.js': ['src/jquery.maskedinput.js']
-        }
-      },
-
-      min: {
-        files: {
-          'dist/jquery.maskedinput.min.js': ['src/jquery.maskedinput.js']
-        }
-      }
-    },
-
-    jasmine: {
-      full: {
-        src: "src/**/*.js",
-        options: {
-          specs: "spec/*[S|s]pec.js",
-          vendor: [
-            "spec/lib/matchers.js",
-            "spec/lib/jasmine-species/jasmine-grammar.js",
-            "spec/lib/setup.js",
-            "lib/jquery-1.9.0.min.js",
-            "spec/lib/jquery.keymasher.js"
-          ]
-        }
-      }
-    },
-    nugetpack: {
-        dist: {
-            src: 'jquery.maskedinput.nuspec',
-            dest: 'dist/'
-        }
-    }
-  });
-
-  grunt.loadNpmTasks("grunt-contrib-jasmine");
-  grunt.loadNpmTasks("grunt-contrib-uglify");
-  grunt.loadNpmTasks('grunt-nuget');
-
-  grunt.registerTask('test', ['jasmine']);
-  grunt.registerTask('pack', ['default','nugetpack']);
-  grunt.registerTask('default', ['test', 'uglify']);
-};
-
-
-/***/ }),
-
 /***/ "./src/scripts/js/authentication-handler.js":
 /*!**************************************************!*\
   !*** ./src/scripts/js/authentication-handler.js ***!
@@ -96,7 +24,7 @@ __webpack_require__.r(__webpack_exports__);
 const authenticationHandlerModule = () => {
   const body = document.body;
   const loggedInUserCookieName = "loggedInUser";
-  const cookieLifeDuration = new Date() + 2 * 3600000;
+  const cookieLifeDuration = new Date() + 2 * 3600;
 
   const userManager = new _modules_authentication_user_manager_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
   let loginCookie = null;
@@ -145,14 +73,15 @@ const authenticationHandlerModule = () => {
   } else {
     if (loginCookie !== null) {
       $(".header .profile__dropdown").html(
-        `<li><button class="btn brn-log-out dropdown-item">Log out</button></li>`
+        `<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`
       );
-      $(".header .profile__dropdown .brn-log-out").on(
-        "click",
-        function (event) {
+      $(".header .profile__dropdown .btn-log-out").on("click",
+        function () {
           loginCookie?.deleteCookie();
+          location.href = "/"
         }
       );
+      console.log(loginCookie);
     } else {
       $(".header .profile__dropdown")
         .html(`<li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
@@ -313,6 +242,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class Chatbot {
+  #closeSvg = `<use xlink:href='#close'></use>`;
+  #chatSvg = `<use xlink:href='#message'></use>`;
   constructor() {
     this.phrases = {
       main: [
@@ -337,6 +268,9 @@ class Chatbot {
     this.answers = $("#answers");
 
     this.openChatbotButton = $(".chatbot__button");
+    this.chatbotSvg = this.openChatbotButton.find(".chatbot__svg");
+
+    this.isOpen = false;
 
     this.init();
   }
@@ -345,7 +279,10 @@ class Chatbot {
     this.displayMessage("bot", this.phrases.hello);
 
     this.openChatbotButton.on("click", () => {
+      this.isOpen = !this.isOpen
+      let svgImage = this.isOpen ? this.#closeSvg : this.#chatSvg;
       this.chatbotElement.toggleClass("show");
+      this.chatbotSvg.html(svgImage)
     });
 
     $("#questionInput, #chatbotSubmit").on("click", () => {
@@ -416,16 +353,25 @@ function chatbotModule() {
 /*!****************************************!*\
   !*** ./src/scripts/js/contact-form.js ***!
   \****************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 
 
+const contactFormModule = () => {
+    (function ($, undefined) {
+        const userPhone = $(".contact__form #phone");
+        if (userPhone) {
+            userPhone.mask("+999 (99) 999 99 99", { placeholder: "" });
+        }
+    })(jQuery);
+}
 
-(function ($, undefined) {
-    const userPhone = $(".contact__form #phone");
-    if (userPhone) {
-        userPhone.mask("+31 (0) 999 999 999", { placeholder: " " });
-    }
-})(jQuery);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (contactFormModule);
+
 
 /***/ }),
 
@@ -442,18 +388,47 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function headerModule() {
-  // const headerOffset = 20;
+  (function ($, undefined) {
+    function handleLinks(links, currentPage) {
+      links.each(function (link) {
+        let elementHref = $(this).attr("href").split("./").pop();
 
-  // window.addEventListener("scroll", (event) => {
-  //   const header = $("header");
-  //   if (window.scrollY >= headerOffset) {
-  //     header.addClass("sticky");
-  //   } else {
-  //     if (header.hasClass("sticky")) {
-  //       header.removeClass("sticky");
-  //     }
-  //   }
-  // });
+        if (currentPage === elementHref) {
+          console.log(currentPage, elementHref);
+          $(this).addClass("active");
+          return;
+        }
+      });
+    }
+    const indexPage = ["index.html", "/dist/", "", "/"];
+    let path = window.location.pathname;
+    let currentPage = path.split("/").pop();
+    console.log(currentPage);
+
+    const allHeaderLinks = $(".header__item a");
+    const allFooterLinks = $(".footer__item a");
+
+    if (indexPage.includes(currentPage)) {
+      $(".header__item a").first().addClass("active");
+      $(".footer__item a").first().addClass("active");
+    } else {
+      handleLinks(allHeaderLinks, currentPage);
+      handleLinks(allFooterLinks, currentPage);
+    }
+
+    const headerOffset = 20;
+
+    window.addEventListener("scroll", (event) => {
+      const header = $("header");
+      if (window.scrollY >= headerOffset) {
+        header.addClass("sticky");
+      } else {
+        if (header.hasClass("sticky")) {
+          header.removeClass("sticky");
+        }
+      }
+    });
+  })(jQuery);
 }
 
 
@@ -543,8 +518,10 @@ class Cookie {
     document.cookie = cookieString;
   }
   deleteCookie() {
-    this.setCookie(this.name, "", { expires: new Date(0) });
-    delete this.cookies[this.name];
+    // this.setCookie(this.name, "", { expires: new Date(0) });
+    // delete this.cookies[this.name];
+    // browser.cookies.remove({name: this.name});
+    document.cookie = `${this.name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
   static getExistingCookies() {
     const cookieString = document.cookie;
@@ -930,16 +907,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const scrollTopModule = () => {
-  const scrollTop = $(".scroll-top");
+  const scrollTopElement = $(".scroll-top");
   const screenOffset = 100;
 
   $(document).ready(function () {
     $(window).on("scroll", function () {
       if (window.scrollY >= screenOffset) {
-        scrollTop.addClass("active");
+        scrollTopElement.addClass("active");
       } else {
-        if (scrollTop.hasClass("active")) {
-          scrollTop.toggleClass("active");
+        if (scrollTopElement.hasClass("active")) {
+          scrollTopElement.toggleClass("active");
         }
       }
     });
@@ -970,16 +947,6 @@ const siteLoaderModule = () => {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (siteLoaderModule);
 
 
-/***/ }),
-
-/***/ "./node_modules/jquery.maskedinput/package.json":
-/*!******************************************************!*\
-  !*** ./node_modules/jquery.maskedinput/package.json ***!
-  \******************************************************/
-/***/ ((module) => {
-
-module.exports = /*#__PURE__*/JSON.parse('{"name":"jquery.maskedinput","version":"1.4.1","author":"Josh Bush (digitalbush.com)","description":"jQuery Masked Input Plugin","devDependencies":{"grunt":"0.4.x","grunt-contrib-jasmine":"0.5.x","grunt-contrib-uglify":"0.2.x","grunt-contrib-watch":"0.5.x","grunt-nuget":"^0.1.4"},"scripts":{"test":"grunt test"},"main":"gruntfile.js","repository":{"type":"git","url":"git+https://github.com/excellalabs/jquery.maskedinput.git"},"keywords":["jQuery","Masked","Input","Plugin"],"license":"MIT","bugs":{"url":"https://github.com/excellalabs/jquery.maskedinput/issues"},"homepage":"https://github.com/excellalabs/jquery.maskedinput#readme"}');
-
 /***/ })
 
 /******/ 	});
@@ -1009,18 +976,6 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"jquery.maskedinput","version"
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -1065,10 +1020,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_site_loader_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/site-loader.js */ "./src/scripts/js/site-loader.js");
 /* harmony import */ var _js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/authentication-handler.js */ "./src/scripts/js/authentication-handler.js");
 /* harmony import */ var _js_contact_form_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/contact-form.js */ "./src/scripts/js/contact-form.js");
-/* harmony import */ var _js_contact_form_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_js_contact_form_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var jquery_maskedinput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! jquery.maskedinput */ "./node_modules/jquery.maskedinput/gruntfile.js");
-/* harmony import */ var jquery_maskedinput__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(jquery_maskedinput__WEBPACK_IMPORTED_MODULE_8__);
-
 
 
 
@@ -1086,7 +1037,7 @@ AOS.init();
 (0,_js_images_loader_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
 (0,_js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
 
-_js_contact_form_js__WEBPACK_IMPORTED_MODULE_7___default()();
+(0,_js_contact_form_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
 
 (0,_js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
 (0,_js_cart_handler_js__WEBPACK_IMPORTED_MODULE_1__.cardHandler)();

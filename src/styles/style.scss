@@ -11,12 +11,11 @@
 }
 
 @mixin list-style {
-  &.active {
-    a {
+  a {
+    &.active{
       color: $accent-light !important;
     }
-  }
-  a {
+
     transition: all 0.4s ease;
     color: $white;
     &:hover {
@@ -207,6 +206,7 @@ textarea.form-control {
 //Header - Start
 .header {
   width: 100%;
+
   &.sticky {
     position: fixed;
     top: 0;
@@ -222,7 +222,6 @@ textarea.form-control {
   &__logo {
     @include flex-row();
     column-gap: 12px;
-    // text-align: center;
     font-size: 28px;
     font-weight: 700;
 
@@ -254,6 +253,12 @@ textarea.form-control {
         }
       }
     }
+  }
+  &__tools{
+    @include flex-row();
+    align-items: center;
+    justify-content: center;
+    column-gap: 12px;
   }
   &__item {
     @include list-style();
@@ -528,11 +533,8 @@ textarea.form-control {
 //Footer - Start
 .footer {
   margin-top: auto;
-
-  &__list {
-    &-item {
-      @include list-style();
-    }
+  &__item {
+    @include list-style();
   }
 }
 //Footer - End

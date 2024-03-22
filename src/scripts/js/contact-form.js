@@ -1,8 +1,12 @@
 "use strict";
 
-(function ($, undefined) {
-    const userPhone = $(".contact__form #phone");
-    if (userPhone) {
-        userPhone.mask("+31 (0) 999 999 999", { placeholder: " " });
-    }
-})(jQuery);
+const contactFormModule = () => {
+    (function ($, undefined) {
+        const userPhone = $(".contact__form #phone");
+        if (userPhone) {
+            userPhone.mask("+999 (99) 999 99 99", { placeholder: "" });
+        }
+    })(jQuery);
+}
+
+export default contactFormModule;

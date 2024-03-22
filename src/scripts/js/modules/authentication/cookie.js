@@ -12,8 +12,10 @@ export default class Cookie {
     document.cookie = cookieString;
   }
   deleteCookie() {
-    this.setCookie(this.name, "", { expires: new Date(0) });
-    delete this.cookies[this.name];
+    // this.setCookie(this.name, "", { expires: new Date(0) });
+    // delete this.cookies[this.name];
+    // browser.cookies.remove({name: this.name});
+    document.cookie = `${this.name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
   static getExistingCookies() {
     const cookieString = document.cookie;

@@ -1,16 +1,16 @@
 "use strict";
 
 const scrollTopModule = () => {
-  const scrollTop = $(".scroll-top");
+  const scrollTopElement = $(".scroll-top");
   const screenOffset = 100;
 
   $(document).ready(function () {
     $(window).on("scroll", function () {
       if (window.scrollY >= screenOffset) {
-        scrollTop.addClass("active");
+        scrollTopElement.addClass("active");
       } else {
-        if (scrollTop.hasClass("active")) {
-          scrollTop.toggleClass("active");
+        if (scrollTopElement.hasClass("active")) {
+          scrollTopElement.toggleClass("active");
         }
       }
     });

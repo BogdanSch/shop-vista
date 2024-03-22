@@ -1,6 +1,8 @@
 "use strict";
 
 class Chatbot {
+  #closeSvg = `<use xlink:href='#close'></use>`;
+  #chatSvg = `<use xlink:href='#message'></use>`;
   constructor() {
     this.phrases = {
       main: [
@@ -25,6 +27,9 @@ class Chatbot {
     this.answers = $("#answers");
 
     this.openChatbotButton = $(".chatbot__button");
+    this.chatbotSvg = this.openChatbotButton.find(".chatbot__svg");
+
+    this.isOpen = false;
 
     this.init();
   }
@@ -33,7 +38,10 @@ class Chatbot {
     this.displayMessage("bot", this.phrases.hello);
 
     this.openChatbotButton.on("click", () => {
+      this.isOpen = !this.isOpen
+      let svgImage = this.isOpen ? this.#closeSvg : this.#chatSvg;
       this.chatbotElement.toggleClass("show");
+      this.chatbotSvg.html(svgImage)
     });
 
     $("#questionInput, #chatbotSubmit").on("click", () => {

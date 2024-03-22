@@ -7,7 +7,7 @@ import Cookie from "./modules/authentication/cookie.js";
 const authenticationHandlerModule = () => {
   const body = document.body;
   const loggedInUserCookieName = "loggedInUser";
-  const cookieLifeDuration = new Date() + 2 * 3600000;
+  const cookieLifeDuration = new Date() + 2 * 3600;
 
   const userManager = new UserManager();
   let loginCookie = null;
@@ -56,14 +56,15 @@ const authenticationHandlerModule = () => {
   } else {
     if (loginCookie !== null) {
       $(".header .profile__dropdown").html(
-        `<li><button class="btn brn-log-out dropdown-item">Log out</button></li>`
+        `<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`
       );
-      $(".header .profile__dropdown .brn-log-out").on(
-        "click",
-        function (event) {
+      $(".header .profile__dropdown .btn-log-out").on("click",
+        function () {
           loginCookie?.deleteCookie();
+          location.href = "/"
         }
       );
+      console.log(loginCookie);
     } else {
       $(".header .profile__dropdown")
         .html(`<li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
