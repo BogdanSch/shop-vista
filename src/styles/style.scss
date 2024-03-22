@@ -171,7 +171,6 @@ textarea.form-control {
   margin: 0 auto;
   margin-bottom: 20px;
 }
-//General - End
 //Loader - Start
 .loader {
   position: fixed;
@@ -202,7 +201,6 @@ textarea.form-control {
     transform: rotate(360deg);
   }
 }
-//Loader - End
 //Header - Start
 .header {
   width: 100%;
@@ -224,8 +222,19 @@ textarea.form-control {
     column-gap: 12px;
     font-size: 28px;
     font-weight: 700;
+    text-decoration: none;
+    transition: all 0.6s ease;
+    color: $white;
 
+    &:hover{
+      color: $accent-light;
+      .header__logo-svg{
+        fill: $accent-light;
+
+      }
+    }
     &-svg {
+      transition: all 0.6s ease;
       fill: $white;
       max-width: 40px;
     }
@@ -367,7 +376,6 @@ textarea.form-control {
     }
   }
 }
-//Header - End
 //Hero - Start
 .hero {
   padding-top: 200px;
@@ -390,7 +398,6 @@ textarea.form-control {
     color: $grey;
   }
 }
-//Hero - End
 //Features - Start
 .features {
   padding: 80px 0;
@@ -455,7 +462,6 @@ textarea.form-control {
     }
   }
 }
-//Products - End
 //Sign In - Start
 .sign-in {
   &__link {
@@ -463,7 +469,6 @@ textarea.form-control {
     font-weight: 700;
   }
 }
-//Sign In - End
 //Sign Up - Start
 .sign-up {
   &__link {
@@ -471,7 +476,6 @@ textarea.form-control {
     font-weight: 700;
   }
 }
-//Sign Up - End
 //About - Start
 .about {
   &__title {
@@ -528,6 +532,14 @@ textarea.form-control {
     display: block;
     width: 100%;
     min-height: 500px;
+  }
+}
+//Check-out - Start
+.check-out{
+  &__svg{
+    fill: $accent;
+    font-size: 20px;
+    text-align: center;
   }
 }
 //Footer - Start
