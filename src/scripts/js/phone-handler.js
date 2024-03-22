@@ -1,12 +1,12 @@
 "use strict";
 
-const contactFormModule = () => {
+const phoneNumberHandler = () => {
     (function ($, undefined) {
-        const userPhone = $(".contact__form #phone");
+        const userPhone = $(".contact__form #phone, .auth__form #inputNumber");
         if (userPhone) {
             userPhone.mask("+999 (99) 999 99 99", { placeholder: "" });
         }
     })(jQuery);
 }
 
-export default contactFormModule;
+export default phoneNumberHandler;

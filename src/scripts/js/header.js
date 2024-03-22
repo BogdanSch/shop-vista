@@ -7,7 +7,6 @@ export default function headerModule() {
         let elementHref = $(this).attr("href").split("./").pop();
 
         if (currentPage === elementHref) {
-          console.log(currentPage, elementHref);
           $(this).addClass("active");
           return;
         }
@@ -16,7 +15,6 @@ export default function headerModule() {
     const indexPage = ["index.html", "/dist/", "", "/"];
     let path = window.location.pathname;
     let currentPage = path.split("/").pop();
-    console.log(currentPage);
 
     const allHeaderLinks = $(".header__item a");
     const allFooterLinks = $(".footer__item a");

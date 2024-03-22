@@ -5,7 +5,7 @@ import imagesLoaderModule from "./js/images-loader.js";
 import scrollTopModule from "./js/scroll-top.js";
 import siteLoaderModule from "./js/site-loader.js";
 import authenticationHandlerModule from "./js/authentication-handler.js";
-import contactFormModule from "./js/contact-form.js"
+import phoneNumberHandler from "./js/phone-handler.js"
 
 AOS.init();
 
@@ -15,7 +15,7 @@ headerModule();
 imagesLoaderModule();
 scrollTopModule();
 
-contactFormModule();
+phoneNumberHandler();
 
 authenticationHandlerModule();
 cardHandler();

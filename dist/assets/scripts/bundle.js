@@ -21,45 +21,114 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// const authenticationHandlerModule = () => {
+//   const body = document.body;
+//   const loggedInUserCookieName = "loggedInUser";
+//   const cookieLifeDuration = new Date() + 2 * 3600;
+
+//   const userManager = new UserManager();
+//   let loginCookie = null;
+
+//   if (Cookie.checkCookie(loggedInUserCookieName)) {
+//     loginCookie = Cookie.getCookie(loggedInUserCookieName);
+//   }
+
+//   function signIn(email, password) {
+//     let user = userManager.findUser(email, password);
+
+//     if (user) {
+//       loginCookie = new Cookie("loggedInUser", email, cookieLifeDuration);
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+
+//   function signUp(name, email, number, password) {
+//     const user = new User(name, email, number, password);
+//     userManager.addUser(user);
+//     loginCookie = new Cookie("loggedInUser", email, cookieLifeDuration);
+//   }
+
+//   if (body.dataset.svPage === "sign-in") {
+//     const signInForm = $("#signInForm");
+//     signInForm.on("submit", (event) => {
+//       event.preventDefault();
+//       const email = signInForm.find("#inputEmail").val();
+//       const password = signInForm.find("#inputPassword").val();
+//       if (signIn(email, password)) location.href = "/dist/";
+//       return false;
+//     });
+//   } else if (body.dataset.svPage === "sign-up") {
+//     const signUpForm = $("#signUpForm");
+//     signUpForm.on("submit", (event) => {
+//       event.preventDefault();
+//       const name = signUpForm.find("#inputName").val();
+//       const email = signUpForm.find("#inputEmail").val();
+//       const number = signUpForm.find("#inputNumber").val();
+//       const password = signUpForm.find("#inputPassword").val();
+//       signUp(name, email, number, password);
+//       location.href = "/dist/";
+//     });
+//   } else {
+//     if (loginCookie !== null) {
+//       $(".header .profile__dropdown").html(
+//         `<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`
+//       );
+//       $(".header .profile__dropdown .btn-log-out").on("click",
+//         function () {
+//           loginCookie.deleteCookie();
+//           location.href = "/dist/"
+//         }
+//       );
+//       // console.log(loginCookie);
+//     } else {
+//       $(".header .profile__dropdown")
+//         .html(`<li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
+//       <li>
+//           <hr class="dropdown-divider">
+//       </li>
+//       <li><a class="dropdown-item" href="./sign-up.html">Sign up</a></li>`);
+//     }
+//   }
+// };
+
 const authenticationHandlerModule = () => {
   const body = document.body;
   const loggedInUserCookieName = "loggedInUser";
-  const cookieLifeDuration = new Date() + 2 * 3600;
+  const cookieLifeDuration = new Date();
+  cookieLifeDuration.setTime(cookieLifeDuration.getTime() + (2 * 3600 * 1000));
 
   const userManager = new _modules_authentication_user_manager_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-  let loginCookie = null;
+  let loginCookie = _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"].get(loggedInUserCookieName);
 
-  if (_modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"].checkCookie(loggedInUserCookieName)) {
-    loginCookie = _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"].getCookie(loggedInUserCookieName);
-  }
-
-  function signIn(email, password) {
-    let user = userManager.findUser(email, password);
-
+  const signIn = (email, password) => {
+    const user = userManager.findUser(email, password);
     if (user) {
-      loginCookie = new _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"]("loggedInUser", email, cookieLifeDuration);
+      new _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"](loggedInUserCookieName, email, cookieLifeDuration);
       return true;
     } else {
       return false;
     }
-  }
+  };
 
-  function signUp(name, email, number, password) {
+  const signUp = (name, email, number, password) => {
     const user = new _modules_authentication_user_js__WEBPACK_IMPORTED_MODULE_0__["default"](name, email, number, password);
     userManager.addUser(user);
-    loginCookie = new _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"]("loggedInUser", email, cookieLifeDuration);
-  }
+    new _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"](loggedInUserCookieName, email, cookieLifeDuration);
+  };
 
-  if (body.dataset.svPage === "sign-in") {
+  const handleSignInForm = () => {
     const signInForm = $("#signInForm");
     signInForm.on("submit", (event) => {
       event.preventDefault();
       const email = signInForm.find("#inputEmail").val();
       const password = signInForm.find("#inputPassword").val();
-      if (signIn(email, password)) location.href = "index.html";
-      return false;
+      if (signIn(email, password)) location.href = "/dist/";
     });
-  } else if (body.dataset.svPage === "sign-up") {
+  };
+
+  const handleSignUpForm = () => {
     const signUpForm = $("#signUpForm");
     signUpForm.on("submit", (event) => {
       event.preventDefault();
@@ -68,29 +137,33 @@ const authenticationHandlerModule = () => {
       const number = signUpForm.find("#inputNumber").val();
       const password = signUpForm.find("#inputPassword").val();
       signUp(name, email, number, password);
-      location.href = "index.html";
+      location.href = "/dist/";
     });
-  } else {
-    if (loginCookie !== null) {
-      $(".header .profile__dropdown").html(
-        `<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`
-      );
-      $(".header .profile__dropdown .btn-log-out").on("click",
-        function () {
-          loginCookie?.deleteCookie();
-          location.href = "/"
-        }
-      );
-      console.log(loginCookie);
+  };
+
+  const initialize = () => {
+    if (body.dataset.svPage === "sign-in") {
+      handleSignInForm();
+    } else if (body.dataset.svPage === "sign-up") {
+      handleSignUpForm();
     } else {
-      $(".header .profile__dropdown")
-        .html(`<li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
-      <li>
-          <hr class="dropdown-divider">
-      </li>
-      <li><a class="dropdown-item" href="./sign-up.html">Sign up</a></li>`);
+      if (loginCookie) {
+        $(".header .profile__dropdown").html(`<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`);
+        $(".header .profile__dropdown .btn-log-out").on("click", () => {
+          _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"].delete(loggedInUserCookieName);
+          location.href = "/dist/";
+        });
+      } else {
+        $(".header .profile__dropdown").html(`
+          <li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="./sign-up.html">Sign up</a></li>
+        `);
+      }
     }
-  }
+  };
+
+  initialize();
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (authenticationHandlerModule);
@@ -349,32 +422,6 @@ function chatbotModule() {
 
 /***/ }),
 
-/***/ "./src/scripts/js/contact-form.js":
-/*!****************************************!*\
-  !*** ./src/scripts/js/contact-form.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-
-
-const contactFormModule = () => {
-    (function ($, undefined) {
-        const userPhone = $(".contact__form #phone");
-        if (userPhone) {
-            userPhone.mask("+999 (99) 999 99 99", { placeholder: "" });
-        }
-    })(jQuery);
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (contactFormModule);
-
-
-/***/ }),
-
 /***/ "./src/scripts/js/header.js":
 /*!**********************************!*\
   !*** ./src/scripts/js/header.js ***!
@@ -394,7 +441,6 @@ function headerModule() {
         let elementHref = $(this).attr("href").split("./").pop();
 
         if (currentPage === elementHref) {
-          console.log(currentPage, elementHref);
           $(this).addClass("active");
           return;
         }
@@ -403,7 +449,6 @@ function headerModule() {
     const indexPage = ["index.html", "/dist/", "", "/"];
     let path = window.location.pathname;
     let currentPage = path.split("/").pop();
-    console.log(currentPage);
 
     const allHeaderLinks = $(".header__item a");
     const allFooterLinks = $(".footer__item a");
@@ -511,42 +556,28 @@ class Cookie {
     this.expireDate = expireDate;
     this.initCookie();
   }
+
   initCookie() {
-    let cookieString = `${this.name}=${this.value}`;
-    const expires = new Date(this.expireDate).toUTCString();
-    cookieString += `; expires=${expires}`;
+    const cookieString = `${this.name}=${this.value};expires=${this.expireDate.toUTCString()};path=/`;
     document.cookie = cookieString;
   }
-  deleteCookie() {
-    // this.setCookie(this.name, "", { expires: new Date(0) });
-    // delete this.cookies[this.name];
-    // browser.cookies.remove({name: this.name});
-    document.cookie = `${this.name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+
+  static getAll() {
+    return document.cookie.split('; ').reduce((cookies, cookie) => {
+      const [name, value] = cookie.split('=');
+      cookies[name] = value;
+      return cookies;
+    }, {});
   }
-  static getExistingCookies() {
-    const cookieString = document.cookie;
-    console.log(document.cookie);
-    let cookies = {};
-    if (cookieString !== "") {
-      const cookieArray = cookieString.split("; ");
-      console.log(cookieArray);
-      cookieArray.forEach((cookie) => {
-        const [name, value] = cookie.split("=");
-        cookies[name] = value;
-      });
-    }
-    return cookies;
+
+  static get(name) {
+    return this.getAll()[name];
   }
-  static checkCookie(name) {
-    const allCookies = this.getExistingCookies();
-    return allCookies[name] !== null;
-  }
-  static getCookie(name) {
-    const allCookies = this.getExistingCookies();
-    return new Cookie(name, allCookies[name]);
+
+  static delete(name) {
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
   }
 }
-
 
 /***/ }),
 
@@ -894,6 +925,32 @@ class ProductsLoader {
 
 /***/ }),
 
+/***/ "./src/scripts/js/phone-handler.js":
+/*!*****************************************!*\
+  !*** ./src/scripts/js/phone-handler.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+
+const phoneNumberHandler = () => {
+    (function ($, undefined) {
+        const userPhone = $(".contact__form #phone, .auth__form #inputNumber");
+        if (userPhone) {
+            userPhone.mask("+999 (99) 999 99 99", { placeholder: "" });
+        }
+    })(jQuery);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (phoneNumberHandler);
+
+
+/***/ }),
+
 /***/ "./src/scripts/js/scroll-top.js":
 /*!**************************************!*\
   !*** ./src/scripts/js/scroll-top.js ***!
@@ -1019,7 +1076,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/scroll-top.js */ "./src/scripts/js/scroll-top.js");
 /* harmony import */ var _js_site_loader_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/site-loader.js */ "./src/scripts/js/site-loader.js");
 /* harmony import */ var _js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/authentication-handler.js */ "./src/scripts/js/authentication-handler.js");
-/* harmony import */ var _js_contact_form_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/contact-form.js */ "./src/scripts/js/contact-form.js");
+/* harmony import */ var _js_phone_handler_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/phone-handler.js */ "./src/scripts/js/phone-handler.js");
 
 
 
@@ -1037,7 +1094,7 @@ AOS.init();
 (0,_js_images_loader_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
 (0,_js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
 
-(0,_js_contact_form_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
+(0,_js_phone_handler_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
 
 (0,_js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
 (0,_js_cart_handler_js__WEBPACK_IMPORTED_MODULE_1__.cardHandler)();

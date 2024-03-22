@@ -27,7 +27,7 @@
                     <div class="sign-in__wrap">
                         <div class="row justify-content-center">
                             <div class="col-md-6">
-                                <form class="card shadow p-4" id="signInForm" method="post" action="index.html">
+                                <form class="auth__form card shadow p-4" id="signInForm" method="post" action="">
                                     <h2 class="text-center mb-4">Sign In</h2>
                                     <div class="mb-3">
                                         <label for="inputEmail" class="form-label">Email address</label>
@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputPassword" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword" required>
+                                        <input type="password" class="form-control" id="inputPassword" autocomplete="on" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary w-100">Sign In</button>
                                     <div class="text-center mt-3">
@@ -54,7 +54,8 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./assets/scripts/lib/jquery-3.7.1.slim.min.js"></script>
+    <script src="./assets/scripts/lib/jquery-3.7.1.min.js"></script>
+    <script src="./assets/scripts/lib/jquery.mask.min.js"></script>
     <script src="./assets/scripts/bundle.js"></script>
 </body>
 
