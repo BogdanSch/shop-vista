@@ -181,6 +181,12 @@ textarea.form-control {
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 750px) {
+  .text-content {
+    max-width: 100%;
+  }
+}
+
 //Loader - Start
 .loader {
   position: fixed;
