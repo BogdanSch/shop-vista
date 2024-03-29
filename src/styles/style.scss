@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: row;
 }
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -12,12 +13,13 @@
 
 @mixin list-style {
   a {
-    &.active{
+    &.active {
       color: $accent-light !important;
     }
 
     transition: all 0.4s ease;
     color: $white;
+
     &:hover {
       color: $accent;
     }
@@ -39,6 +41,7 @@ $dark-light: #313131;
 $purple: #7300ff;
 $white: #f7f7f7;
 $grey: #f3f3f3;
+$dark-grey: #2f2f2f;
 $dark-border: #0000002d;
 
 $card-shadow: rgba(0, 0, 0, 0.1);
@@ -53,6 +56,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+
   &.loaded .loader {
     display: none;
   }
@@ -111,9 +115,11 @@ img {
       border: 1px solid $accent;
     }
   }
+
   &-outline-primary {
     color: $accent;
     border: 1px solid $accent;
+
     &:hover,
     &:focus {
       color: $white;
@@ -145,6 +151,7 @@ img {
     margin-bottom: 0.5rem;
   }
 }
+
 input.form-control {
   @include form-control();
   transition: all 0.4s ease-out;
@@ -155,6 +162,7 @@ input.form-control {
     box-shadow: 0 0 0 0.2rem $accent-light;
   }
 }
+
 textarea.form-control {
   @include form-control();
   transition: all 0.4s ease-out;
@@ -165,12 +173,14 @@ textarea.form-control {
     box-shadow: 0 0 0 0.2rem $accent-light;
   }
 }
+
 .text-content {
   display: block;
   max-width: 60%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
+
 //Loader - Start
 .loader {
   position: fixed;
@@ -193,14 +203,17 @@ textarea.form-control {
     animation: spin 2s linear infinite;
   }
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 //Header - Start
 .header {
   width: 100%;
@@ -211,12 +224,14 @@ textarea.form-control {
     left: 0;
     z-index: 9999;
   }
+
   &__wrap {
     @include flex-row();
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
   }
+
   &__logo {
     @include flex-row();
     column-gap: 12px;
@@ -226,19 +241,22 @@ textarea.form-control {
     transition: all 0.6s ease;
     color: $white;
 
-    &:hover{
+    &:hover {
       color: $accent-light;
-      .header__logo-svg{
+
+      .header__logo-svg {
         fill: $accent-light;
 
       }
     }
+
     &-svg {
       transition: all 0.6s ease;
       fill: $white;
       max-width: 40px;
     }
   }
+
   &__menu {
     @include flex-row();
     justify-content: center;
@@ -251,6 +269,7 @@ textarea.form-control {
         justify-content: center;
         align-items: center;
       }
+
       &__img {
         width: 32px;
         height: 32px;
@@ -263,15 +282,18 @@ textarea.form-control {
       }
     }
   }
-  &__tools{
+
+  &__tools {
     @include flex-row();
     align-items: center;
     justify-content: center;
     column-gap: 12px;
   }
+
   &__item {
     @include list-style();
   }
+
   &__cart {
     position: relative;
     width: 40px !important;
@@ -282,9 +304,10 @@ textarea.form-control {
     }
 
     &:hover .header__cart-list {
+      display: block;
       top: 100%;
       opacity: 1;
-      pointer-events: all;
+      // pointer-events: all;
     }
 
     .shopping-cart {
@@ -312,7 +335,8 @@ textarea.form-control {
       border-radius: 16px;
       z-index: 100;
       min-width: 460px;
-      pointer-events: none;
+      display: none;
+      // pointer-events: none;
 
       .items {
         &-list {
@@ -320,11 +344,13 @@ textarea.form-control {
           row-gap: 8px;
           color: $dark;
         }
+
         &-data {
           @include flex-row();
           justify-content: space-between;
           align-items: center;
         }
+
         &-total-price {
           font-weight: 600;
           color: $dark;
@@ -341,11 +367,13 @@ textarea.form-control {
       &__picture {
         max-width: 64px;
       }
+
       &__title {
         font-size: 14px;
         color: $dark;
         text-align: center;
       }
+
       &__controls {
         @include flex-row();
         justify-content: center;
@@ -356,6 +384,7 @@ textarea.form-control {
           color: $dark;
         }
       }
+
       &__price {
         text-align: center;
         font-weight: 600;
@@ -363,12 +392,24 @@ textarea.form-control {
       }
     }
   }
+
+  .profile__dropdown {
+    &.show {
+      position: absolute;
+      inset: 0px 0px auto auto !important;
+      margin: 0px !important;
+      transform: translate3d(60px, 50px, 0px) !important;
+    }
+  }
 }
-@media only screen and (max-width: 539px) {
+
+@media only screen and (max-width: 580px) {
   .header {
     &__wrap {
       justify-content: center;
+      @include flex-column();
     }
+
     &__menu {
       @include flex-column();
       row-gap: 20px;
@@ -376,6 +417,7 @@ textarea.form-control {
     }
   }
 }
+
 //Hero - Start
 .hero {
   padding-top: 200px;
@@ -387,7 +429,8 @@ textarea.form-control {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  &-store{
+
+  &-store {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
       url("../images/yaroslav-romanenko-7YkwadIk2v8-unsplash.jpg");
   }
@@ -397,10 +440,12 @@ textarea.form-control {
     font-weight: 900;
     font-size: 48px;
   }
+
   &__description {
     color: $grey;
   }
 }
+
 //Features - Start
 .features {
   padding: 80px 0;
@@ -412,6 +457,7 @@ textarea.form-control {
     justify-content: center;
     align-items: center;
   }
+
   &__icon {
     i {
       font-size: 48px;
@@ -419,6 +465,7 @@ textarea.form-control {
       color: $accent;
     }
   }
+
   &__title {
     font-size: 24px;
     font-weight: 600;
@@ -431,10 +478,15 @@ textarea.form-control {
     color: $dark-light;
   }
 }
+
 //Products - Start
 .products {
-  margin-top: 100px;
+  margin-top: 200px;
   margin-bottom: 100px;
+
+  &__description {
+    margin-bottom: 80px;
+  }
 
   &__list {
     @include flex-row();
@@ -443,6 +495,7 @@ textarea.form-control {
     column-gap: 20px;
     flex-wrap: wrap;
   }
+
   &__item {
     width: 16rem;
 
@@ -457,17 +510,20 @@ textarea.form-control {
     }
   }
 }
+
 @media only screen and (max-width: 760px) {
   .products {
     &__list {
       row-gap: 10px;
       column-gap: 0;
     }
+
     &__item {
       width: 80%;
     }
   }
 }
+
 //Sign In - Start
 .sign-in {
   &__link {
@@ -475,6 +531,7 @@ textarea.form-control {
     font-weight: 700;
   }
 }
+
 //Sign Up - Start
 .sign-up {
   &__link {
@@ -482,35 +539,53 @@ textarea.form-control {
     font-weight: 700;
   }
 }
+
 //About - Start
 .about {
   &__title {
     margin-top: 20px;
   }
 }
+
+//Auth
+.auth {
+  &__form {
+    min-height: 500px;
+    @include flex-column();
+    justify-content: center;
+  }
+}
+
 //About-Features - Start
 .about-features {
   margin-top: 120px;
+
   &__card {
     text-align: center;
+
     i {
       font-size: 52px;
       color: $accent;
     }
   }
+
   &__list {
     list-style: none;
     padding-left: 0;
   }
 }
+
 //Gallery - Start
 .gallery {
   margin-top: 140px;
+
   .carousel {
     &-image {
       filter: brightness(70%);
     }
+
     &-caption {
+
       h5,
       p {
         color: $white;
@@ -518,20 +593,25 @@ textarea.form-control {
     }
   }
 }
+
 //FAQS - Start
 .faqs {
   margin-top: 120px;
 }
+
 //Contact
 .contact {
   margin-top: 100px;
+
   &__title {
     color: $accent;
+
     span {
       color: $purple;
     }
   }
 }
+
 //Map - Start
 .map {
   &__frame {
@@ -540,21 +620,28 @@ textarea.form-control {
     min-height: 500px;
   }
 }
+
 //Check-out - Start
-.check-out{
-  &__svg{
+.check-out {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  &__svg {
     fill: $accent;
     font-size: 20px;
     text-align: center;
   }
 }
+
 //Footer - Start
 .footer {
   margin-top: auto;
+
   &__item {
     @include list-style();
   }
 }
+
 //Footer - End
 //ChatBot - Start
 .chatbot {
@@ -584,51 +671,73 @@ textarea.form-control {
       fill: $white;
     }
   }
+
   &__form {
     position: fixed;
     bottom: 100px;
     left: 120%;
-    width: 300px;
+    width: 360px;
     height: 340px;
     border-radius: 20px;
-    background-color: $accent;
+    background-color: $dark-light;
     overflow-y: auto;
     padding: 16px 24px;
     transition: all 0.5s ease-in-out;
     z-index: 99999;
 
     &.show {
-      left: calc(100% - 320px) !important;
+      left: calc(100% - 380px) !important;
     }
   }
+
   &__answers {
     @include flex-column();
   }
+
   &__inputs {
+    margin-top: 20px;
     @include flex-row();
     justify-content: flex-start;
     column-gap: 4px;
   }
+
+  &__query-input {
+    border-radius: 20px;
+    background-color: $dark-grey !important;
+    border: 1px solid $purple !important;
+    color: $grey !important;
+
+    &::placeholder {
+      color: $grey !important;
+    }
+  }
+
   .answers {
     &__bot {
       align-self: flex-start;
       width: 80%;
       padding: 5px 16px;
-      background-color: $accent-light;
+      background-color: $dark-grey;
+      border: 1px solid $accent-light;
       border-radius: 8px;
       margin-bottom: 8px;
+      color: $grey !important;
     }
+
     &__user {
       align-self: flex-end;
       width: 80%;
       padding: 5px 16px;
-      background-color: $purple;
+      background-color: $dark-grey;
+      border: 1px solid $purple;
       color: $white;
       border-radius: 8px;
       margin-bottom: 8px;
+      color: $grey !important;
     }
   }
 }
+
 //ChatBot - End
 //ScrollTop - Start
 .scroll-top {
@@ -663,4 +772,5 @@ textarea.form-control {
     width: 30px;
   }
 }
+
 //ScrollTop - End

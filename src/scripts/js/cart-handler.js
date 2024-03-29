@@ -118,7 +118,7 @@ import { ProductsLoader } from "./modules/products-loader.js";
 
 export const categories = {
   latestDeals: new Category(
-    "Latest Deals",
+    "Latest Deal",
     `Discover our diverse selection of high-quality
   tech products, ranging from cutting-edge smartphones to powerful laptops, designed to
   elevate
@@ -128,11 +128,11 @@ export const categories = {
   ),
   iphones: new Category(
     "Iphone",
-    `Discover the latest innovations in mobile technology with our selection of iPhones. From the sleek design to the cutting-edge features, each iPhone offers a seamless blend of style and performance. Whether you're captivated by the stunning displays, powerful cameras, or intuitive user experience, there's an iPhone to suit every need and preference. Explore our collection to find the perfect balance of elegance and functionality, and elevate your mobile experience with the iconic iPhone.`
+    `Discover the latest innovations in mobile technology with our selection of iPhones. Explore our collection to find the perfect balance of elegance and functionality, and elevate your mobile experience with the iconic iPhone.`
   ),
   laptops: new Category(
     "Laptop",
-    `Elevate your productivity and computing experience with our range of laptops. Designed for performance and versatility, our laptops offer powerful processing capabilities, stunning displays, and sleek, portable designs. Whether you're a professional looking for a reliable workhorse or a student seeking a versatile device for studying and entertainment, our selection of laptops caters to diverse needs and preferences. From ultra-portable models for on-the-go productivity to high-performance machines for gaming and multimedia tasks, explore our collection to find the perfect laptop to match your lifestyle.`
+    `Elevate your productivity and computing experience with our range of laptops. Whether you're a professional looking for a reliable workhorse or a student seeking a versatile device for studying and entertainment, our selection of laptops caters to diverse needs and preferences. From ultra-portable models for on-the-go productivity to high-performance machines for gaming and multimedia tasks, explore our collection to find the perfect laptop to match your lifestyle.`
   ),
 };
 
@@ -167,6 +167,14 @@ export function cardHandler() {
     clearCartButton.addEventListener("click", event => {
       cart.clearCart();
     });
+    if (body.dataset.svPage === "check-out") {
+      const checkOutForm = document.querySelector(".check-out__form");
+      checkOutForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        cart.clearCart();
+        window.location = "/dist/check-out-success.html";
+      })
+    }
   }
 
   function generateProductsSection(
@@ -175,7 +183,7 @@ export function cardHandler() {
     showStoreButton
   ) {
     if (productsToGenerateContainer) {
-      let productsSectionText = `<section class="products" id="products-${productsCategory.title}" data-aos="fade-up" data-aos-duration="2000">
+      let productsSectionText = `<section class="products" id="products-${productsCategory.title}" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="linear">
       <div class="container">
           <div class="products__wrap">
               <div class="text-content">

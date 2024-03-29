@@ -306,7 +306,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const categories = {
   latestDeals: new _modules_category_js__WEBPACK_IMPORTED_MODULE_1__["default"](
-    "Latest Deals",
+    "Latest Deal",
     `Discover our diverse selection of high-quality
   tech products, ranging from cutting-edge smartphones to powerful laptops, designed to
   elevate
@@ -316,11 +316,11 @@ const categories = {
   ),
   iphones: new _modules_category_js__WEBPACK_IMPORTED_MODULE_1__["default"](
     "Iphone",
-    `Discover the latest innovations in mobile technology with our selection of iPhones. From the sleek design to the cutting-edge features, each iPhone offers a seamless blend of style and performance. Whether you're captivated by the stunning displays, powerful cameras, or intuitive user experience, there's an iPhone to suit every need and preference. Explore our collection to find the perfect balance of elegance and functionality, and elevate your mobile experience with the iconic iPhone.`
+    `Discover the latest innovations in mobile technology with our selection of iPhones. Explore our collection to find the perfect balance of elegance and functionality, and elevate your mobile experience with the iconic iPhone.`
   ),
   laptops: new _modules_category_js__WEBPACK_IMPORTED_MODULE_1__["default"](
     "Laptop",
-    `Elevate your productivity and computing experience with our range of laptops. Designed for performance and versatility, our laptops offer powerful processing capabilities, stunning displays, and sleek, portable designs. Whether you're a professional looking for a reliable workhorse or a student seeking a versatile device for studying and entertainment, our selection of laptops caters to diverse needs and preferences. From ultra-portable models for on-the-go productivity to high-performance machines for gaming and multimedia tasks, explore our collection to find the perfect laptop to match your lifestyle.`
+    `Elevate your productivity and computing experience with our range of laptops. Whether you're a professional looking for a reliable workhorse or a student seeking a versatile device for studying and entertainment, our selection of laptops caters to diverse needs and preferences. From ultra-portable models for on-the-go productivity to high-performance machines for gaming and multimedia tasks, explore our collection to find the perfect laptop to match your lifestyle.`
   ),
 };
 
@@ -355,6 +355,14 @@ function cardHandler() {
     clearCartButton.addEventListener("click", event => {
       cart.clearCart();
     });
+    if (body.dataset.svPage === "check-out") {
+      const checkOutForm = document.querySelector(".check-out__form");
+      checkOutForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        cart.clearCart();
+        window.location = "/dist/check-out-success.html";
+      })
+    }
   }
 
   function generateProductsSection(
@@ -363,7 +371,7 @@ function cardHandler() {
     showStoreButton
   ) {
     if (productsToGenerateContainer) {
-      let productsSectionText = `<section class="products" id="products-${productsCategory.title}" data-aos="fade-up" data-aos-duration="2000">
+      let productsSectionText = `<section class="products" id="products-${productsCategory.title}" data-aos="fade-up" data-aos-duration="1500" data-aos-easing="linear">
       <div class="container">
           <div class="products__wrap">
               <div class="text-content">
@@ -450,8 +458,6 @@ class Chatbot {
     this.chatbotSvg = this.openChatbotButton.find(".chatbot__svg");
 
     this.isOpen = false;
-
-    this.init();
   }
 
   init() {
@@ -461,7 +467,7 @@ class Chatbot {
       this.isOpen = !this.isOpen
       let svgImage = this.isOpen ? this.#closeSvg : this.#chatSvg;
       this.chatbotElement.toggleClass("show");
-      this.chatbotSvg.html(svgImage)
+      this.chatbotSvg.html(svgImage);
     });
 
     $("#questionInput, #chatbotSubmit").on("click", () => {
@@ -482,7 +488,7 @@ class Chatbot {
             this.displayMessage("bot", this.phrases.aboutStore);
           } else if (question.toLowerCase().includes("contact")) {
             this.displayMessage("bot", this.phrases.contactInfo);
-          } else if (question.toLowerCase().includes("hours")) {
+          } else if (question.toLowerCase().includes("hours") || question.toLowerCase().includes("open")) {
             this.displayMessage("bot", this.phrases.hoursOfOperation);
           } else {
             const randomIndex = Math.floor(
@@ -491,13 +497,7 @@ class Chatbot {
             this.displayMessage("bot", this.phrases.main[randomIndex]);
           }
 
-          this.chatbotElement.animate(
-            {
-              scrollTop:
-                chatbotElement.scrollHeight - chatbotElement.clientHeight,
-            },
-            10
-          );
+          this.scrollToBottom(); // Scroll to bottom after displaying bot's response
         }, 1000);
       }
     });
@@ -519,10 +519,20 @@ class Chatbot {
   checkString(str) {
     return str === null || str.match(/^ *$/) !== null;
   }
+
+  scrollToBottom() {
+    this.chatbotElement.animate(
+      {
+        scrollTop: this.chatbotElement.prop("scrollHeight")
+      },
+      10
+    );
+  }
 }
 
 function chatbotModule() {
   const chatbot = new Chatbot();
+  chatbot.init();
 }
 
 
@@ -641,6 +651,33 @@ const imagesLoaderModule = () => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (imagesLoaderModule);
+
+
+/***/ }),
+
+/***/ "./src/scripts/js/input-handlers.js":
+/*!******************************************!*\
+  !*** ./src/scripts/js/input-handlers.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+
+const inputHandlers = () => {
+    (function ($, undefined) {
+        const userPhone = $(".contact__form #phone, .auth__form #inputNumber, .check-out__form #phone");
+        userPhone.mask("+380 (99) 999 9999", { placeholder: "" });
+
+        const bankCardField = $(".check-out__form #cardNumber");
+        bankCardField.mask("1234 1234 1234", { placeholder: "" });
+    })(jQuery);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (inputHandlers);
 
 
 /***/ }),
@@ -967,66 +1004,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ProductsLoader: () => (/* binding */ ProductsLoader)
 /* harmony export */ });
 /* harmony import */ var _product_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./product.js */ "./src/scripts/js/modules/product.js");
-// import { Product } from "./product.js";
-
-// export class ProductsLoader {
-//   constructor(
-//     productsDataPath = "../data/products.json",
-//     productsCategory,
-//     showProducts,
-//     callback
-//   ) {
-//     this.productsDataPath = productsDataPath;
-//     this.productsCategory = productsCategory;
-//     this.showProducts = showProducts;
-//     this.callback = callback;
-//   }
-//   async loadProducts(amountToShow) {
-//     try {
-//       const response = await fetch(this.productsDataPath);
-//       if (!response.ok) {
-//         throw new Error("Network response was not ok");
-//       }
-//       this.loadedProducts = await response.json();
-//       this.displayProducts(amountToShow);
-//       this.callback();
-//     } catch (error) {
-//       console.error("There was a problem with the fetch operation:", error);
-//     }
-//   }
-//   displayProducts(amountToShow) {
-//     let filteredProducts = [];
-//     if (this.productsCategory.isDealsCategory) {
-//       filteredProducts = this.loadedProducts;
-//     } else {
-//       console.log(this.loadedProducts);
-//       filteredProducts = this.loadedProducts.filter(
-//         (product) => product.category === this.productsCategory.title
-//       );
-//     }
-//     filteredProducts = filteredProducts.slice(0, amountToShow);
-
-//     const productListHTML = filteredProducts
-//       .map((product) => {
-//         const newProduct = new Product(
-//           product.id,
-//           product.name,
-//           product.picture,
-//           product.price,
-//           1,
-//           product.category
-//         );
-//         return newProduct.renderProduct();
-//       })
-//       .join("");
-
-//     this.showProducts(
-//       productListHTML,
-//       this.productsCategory,
-//       this.productsCategory.isDealsCategory
-//     );
-//   }
-// }
 
 
 class ProductsLoader {
@@ -1080,32 +1057,6 @@ class ProductsLoader {
     );
   }
 }
-
-
-/***/ }),
-
-/***/ "./src/scripts/js/phone-handler.js":
-/*!*****************************************!*\
-  !*** ./src/scripts/js/phone-handler.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-
-
-const phoneNumberHandler = () => {
-    (function ($, undefined) {
-        const userPhone = $(".contact__form #phone, .auth__form #inputNumber");
-        if (userPhone) {
-            userPhone.mask("+999 (99) 999 99 99", { placeholder: "" });
-        }
-    })(jQuery);
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (phoneNumberHandler);
 
 
 /***/ }),
@@ -1235,7 +1186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/scroll-top.js */ "./src/scripts/js/scroll-top.js");
 /* harmony import */ var _js_site_loader_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/site-loader.js */ "./src/scripts/js/site-loader.js");
 /* harmony import */ var _js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/authentication-handler.js */ "./src/scripts/js/authentication-handler.js");
-/* harmony import */ var _js_phone_handler_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/phone-handler.js */ "./src/scripts/js/phone-handler.js");
+/* harmony import */ var _js_input_handlers_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/input-handlers.js */ "./src/scripts/js/input-handlers.js");
 
 
 
@@ -1253,7 +1204,7 @@ AOS.init();
 (0,_js_images_loader_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
 (0,_js_scroll_top_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
 
-(0,_js_phone_handler_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
+(0,_js_input_handlers_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
 
 (0,_js_authentication_handler_js__WEBPACK_IMPORTED_MODULE_6__["default"])();
 (0,_js_cart_handler_js__WEBPACK_IMPORTED_MODULE_1__.cardHandler)();

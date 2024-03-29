@@ -30,8 +30,6 @@ class Chatbot {
     this.chatbotSvg = this.openChatbotButton.find(".chatbot__svg");
 
     this.isOpen = false;
-
-    this.init();
   }
 
   init() {
@@ -41,7 +39,7 @@ class Chatbot {
       this.isOpen = !this.isOpen
       let svgImage = this.isOpen ? this.#closeSvg : this.#chatSvg;
       this.chatbotElement.toggleClass("show");
-      this.chatbotSvg.html(svgImage)
+      this.chatbotSvg.html(svgImage);
     });
 
     $("#questionInput, #chatbotSubmit").on("click", () => {
@@ -62,7 +60,7 @@ class Chatbot {
             this.displayMessage("bot", this.phrases.aboutStore);
           } else if (question.toLowerCase().includes("contact")) {
             this.displayMessage("bot", this.phrases.contactInfo);
-          } else if (question.toLowerCase().includes("hours")) {
+          } else if (question.toLowerCase().includes("hours") || question.toLowerCase().includes("open")) {
             this.displayMessage("bot", this.phrases.hoursOfOperation);
           } else {
             const randomIndex = Math.floor(
@@ -71,13 +69,7 @@ class Chatbot {
             this.displayMessage("bot", this.phrases.main[randomIndex]);
           }
 
-          this.chatbotElement.animate(
-            {
-              scrollTop:
-                chatbotElement.scrollHeight - chatbotElement.clientHeight,
-            },
-            10
-          );
+          this.scrollToBottom(); // Scroll to bottom after displaying bot's response
         }, 1000);
       }
     });
@@ -99,8 +91,18 @@ class Chatbot {
   checkString(str) {
     return str === null || str.match(/^ *$/) !== null;
   }
+
+  scrollToBottom() {
+    this.chatbotElement.animate(
+      {
+        scrollTop: this.chatbotElement.prop("scrollHeight")
+      },
+      10
+    );
+  }
 }
 
 export default function chatbotModule() {
   const chatbot = new Chatbot();
+  chatbot.init();
 }
