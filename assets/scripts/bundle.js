@@ -16,83 +16,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_authentication_user_manager_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/authentication/user-manager.js */ "./src/scripts/js/modules/authentication/user-manager.js");
 /* harmony import */ var _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/authentication/cookie.js */ "./src/scripts/js/modules/authentication/cookie.js");
 
-
-
-
-
-
-// const authenticationHandlerModule = () => {
-//   const body = document.body;
-//   const loggedInUserCookieName = "loggedInUser";
-//   const cookieLifeDuration = new Date() + 2 * 3600;
-
-//   const userManager = new UserManager();
-//   let loginCookie = null;
-
-//   if (Cookie.checkCookie(loggedInUserCookieName)) {
-//     loginCookie = Cookie.getCookie(loggedInUserCookieName);
-//   }
-
-//   function signIn(email, password) {
-//     let user = userManager.findUser(email, password);
-
-//     if (user) {
-//       loginCookie = new Cookie("loggedInUser", email, cookieLifeDuration);
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   }
-
-//   function signUp(name, email, number, password) {
-//     const user = new User(name, email, number, password);
-//     userManager.addUser(user);
-//     loginCookie = new Cookie("loggedInUser", email, cookieLifeDuration);
-//   }
-
-//   if (body.dataset.svPage === "sign-in") {
-//     const signInForm = $("#signInForm");
-//     signInForm.on("submit", (event) => {
-//       event.preventDefault();
-//       const email = signInForm.find("#inputEmail").val();
-//       const password = signInForm.find("#inputPassword").val();
-//       if (signIn(email, password)) location.href = "/dist/";
-//       return false;
-//     });
-//   } else if (body.dataset.svPage === "sign-up") {
-//     const signUpForm = $("#signUpForm");
-//     signUpForm.on("submit", (event) => {
-//       event.preventDefault();
-//       const name = signUpForm.find("#inputName").val();
-//       const email = signUpForm.find("#inputEmail").val();
-//       const number = signUpForm.find("#inputNumber").val();
-//       const password = signUpForm.find("#inputPassword").val();
-//       signUp(name, email, number, password);
-//       location.href = "/dist/";
-//     });
-//   } else {
-//     if (loginCookie !== null) {
-//       $(".header .profile__dropdown").html(
-//         `<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`
-//       );
-//       $(".header .profile__dropdown .btn-log-out").on("click",
-//         function () {
-//           loginCookie.deleteCookie();
-//           location.href = "/dist/"
-//         }
-//       );
-//       // console.log(loginCookie);
-//     } else {
-//       $(".header .profile__dropdown")
-//         .html(`<li><a class="dropdown-item" href="./sign-in.html">Sign in</a></li>
-//       <li>
-//           <hr class="dropdown-divider">
-//       </li>
-//       <li><a class="dropdown-item" href="./sign-up.html">Sign up</a></li>`);
-//     }
-//   }
-// };
-
 const authenticationHandlerModule = () => {
   const body = document.body;
   const loggedInUserCookieName = "loggedInUser";
@@ -124,7 +47,7 @@ const authenticationHandlerModule = () => {
       event.preventDefault();
       const email = signInForm.find("#inputEmail").val();
       const password = signInForm.find("#inputPassword").val();
-      if (signIn(email, password)) location.href = "/dist/";
+      if (signIn(email, password)) location.href = "/";
     });
   };
 
@@ -137,7 +60,7 @@ const authenticationHandlerModule = () => {
       const number = signUpForm.find("#inputNumber").val();
       const password = signUpForm.find("#inputPassword").val();
       signUp(name, email, number, password);
-      location.href = "/dist/";
+      location.href = "/";
     });
   };
 
@@ -151,7 +74,7 @@ const authenticationHandlerModule = () => {
         $(".header .profile__dropdown").html(`<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`);
         $(".header .profile__dropdown .btn-log-out").on("click", () => {
           _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"].delete(loggedInUserCookieName);
-          location.href = "/dist/";
+          location.href = "/";
         });
       } else {
         $(".header .profile__dropdown").html(`
@@ -247,7 +170,7 @@ function cardHandler() {
       checkOutForm.addEventListener("submit", (event) => {
         event.preventDefault();
         cart.clearCart();
-        window.location.assign("/dist/check-out-success.html");
+        window.location.assign("/check-out-success.html");
       })
     }
   }
