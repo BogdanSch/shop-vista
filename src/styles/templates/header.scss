@@ -81,17 +81,6 @@
         width: 40px !important;
         height: 100px;
 
-        .amount-input {
-            text-align: center;
-        }
-
-        &:hover .header__cart-list {
-            display: block;
-            top: 100%;
-            opacity: 1;
-            pointer-events: all;
-        }
-
         .shopping-cart {
             cursor: pointer;
             width: 100%;
@@ -101,57 +90,6 @@
 
             &:hover {
                 fill: $accent !important;
-            }
-        }
-
-        &-list {
-            transition: all 0.4s ease;
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            right: -240%;
-            list-style: none;
-            padding: 10px;
-            background-color: $white;
-            border: 1px solid $dark-border;
-            border-radius: 16px;
-            z-index: 100;
-            min-width: 460px;
-            display: none;
-            pointer-events: none;
-        }
-
-        &-item {
-            @include flex-row();
-            justify-content: center;
-            align-items: center;
-            column-gap: 10px;
-
-            &__picture {
-                max-width: 64px;
-            }
-
-            &__title {
-                font-size: 14px;
-                color: $dark;
-                text-align: center;
-            }
-
-            &__controls {
-                @include flex-row();
-                justify-content: center;
-                align-items: center;
-
-                input {
-                    width: 60px !important;
-                    color: $dark;
-                }
-            }
-
-            &__price {
-                text-align: center;
-                font-weight: 600;
-                color: $dark;
             }
         }
     }
@@ -266,69 +204,6 @@
 
             &.active {
                 top: 18%;
-            }
-        }
-
-        &__cart {
-            &-list {
-                left: -340%;
-                list-style: none;
-                padding: 4px;
-                padding-top: 12px;
-                background-color: $white;
-                border: 1px solid $dark-border;
-                border-radius: 16px;
-                z-index: 100;
-                min-width: 360px !important;
-                pointer-events: none;
-
-                .items {
-                    &-list {
-                        max-height: 200px;
-                        overflow: scroll;
-                        row-gap: 4px;
-                    }
-
-                    &-total-price {
-                        font-weight: 700;
-                        font-size: 14px;
-                    }
-                }
-            }
-
-            &-item {
-                @include flex-row();
-                justify-content: center;
-                align-items: center;
-                column-gap: 8px;
-
-                &__picture {
-                    width: 52px;
-                }
-
-                &__title {
-                    font-size: 10px;
-                    color: $dark;
-                    text-align: center;
-                }
-
-                &__controls {
-                    @include flex-row();
-                    justify-content: center;
-                    align-items: center;
-
-                    input {
-                        width: 60px !important;
-                        color: $dark;
-                    }
-                }
-
-                &__price {
-                    font-size: 12px;
-                    text-align: center;
-                    font-weight: 600;
-                    color: $dark;
-                }
             }
         }
     }

@@ -24,14 +24,15 @@
         <header class="header bg-dark text-light">
             <div class="container">
                 <div class="header__wrap">
-                    <a href="/dist/"
-                        class="header__logo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <a href="/dist/" class="header__logo d-flex align-items-center mb-2 mb-lg-0">
                         <svg class="header__logo-svg">
                             <use xlink:href='#palette'></use>
                         </svg>
                         ShopVista
                     </a>
-
+                    <div class="header__burger">
+                        <span></span>
+                    </div>
                     <div class="header__menu">
                         <nav class="header__list nav justify-content-center">
                             <li class="header__item"><a href="/dist/" class="nav-link px-2">Home</a></li>
@@ -44,21 +45,9 @@
                         </nav>
                         <div class="header__tools">
                             <div class="header__cart">
-                                <svg class="shopping-cart">
+                                <svg class="shopping-cart" data-bs-toggle="modal" data-bs-target="#shopCartModal">
                                     <use xlink:href='#basketShopping'></use>
                                 </svg>
-                                <ul class="header__cart-list">
-                                    <div class="items-list">
-                                        Nothing yet to buy...
-                                    </div>
-                                    <div class="items-data mt-3">
-                                        <button type="button" class="btn btn-danger btn-clear"
-                                            id="clearCartButton">Clear the cart</button>
-                                        <a class="btn btn-success btn-clear" href="./check-out.html"
-                                            id="clearCartButton">Check out</a>
-                                        <span class="items-total-price">0$</span>
-                                    </div>
-                                </ul>
                             </div>
                             <div class="profile dropdown text-end">
                                 <a href="#" class="profile__link link-dark text-decoration-none dropdown-toggle"
@@ -84,20 +73,18 @@
             <section class="about mt-5">
                 <div class="container">
                     <div class="about__wrap mb-5">
-                        <div class="text-center">
-                            <img src="./assets/images/St-Sophia-Cathedral.avif" alt="Saint Sophia Cathedral Image"
-                                data-aos="zoom-out" data-aos-duration="2000">
-                            <div class="text-content text-center" data-aos="zoom-in" data-aos-duration="1500">
-                                <h2 class="about__title">About Us</h2>
-                                <p class="about__description">
-                                    Welcome to Shop Vista, your one-stop destination for all your shopping needs! At
-                                    Shop Vista, we pride ourselves on offering a wide range of high-quality products,
-                                    from fashion and electronics to home decor and beyond. Our mission is to provide our
-                                    customers with the best shopping experience possible, with a focus on convenience,
-                                    affordability, and exceptional customer service.
-                                </p>
-                                <a href="#aboutFeatures" class="btn btn-outline-primary">Read More</a>
-                            </div>
+                        <img src="./assets/images/St-Sophia-Cathedral.avif" alt="Saint Sophia Cathedral Image"
+                            data-aos="zoom-out" data-aos-duration="2000" class="about__image">
+                        <div class="text-content text-center" data-aos="zoom-in" data-aos-duration="1500">
+                            <h2 class="about__title">About Us</h2>
+                            <p class="about__description">
+                                Welcome to Shop Vista, your one-stop destination for all your shopping needs! At
+                                Shop Vista, we pride ourselves on offering a wide range of high-quality products,
+                                from fashion and electronics to home decor and beyond. Our mission is to provide our
+                                customers with the best shopping experience possible, with a focus on convenience,
+                                affordability, and exceptional customer service.
+                            </p>
+                            <a href="#aboutFeatures" class="btn btn-outline-primary">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -256,6 +243,28 @@
                     <use xlink:href='#arrowTop'></use>
                 </svg>
             </a>
+        </div>
+        <div class="cart modal fade" id="shopCartModal" aria-hidden="true">
+            <div class="cart__modal modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="cart__title modal-title">Shopping Cart</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="items-list modal-body">
+                        <p>Nothing yet in your cart...</p>
+                    </div>
+                    <div class="items-data modal-footer">
+                        <button type="button" class="btn btn-danger btn-clear" id="clearCartButton">Clear the
+                            cart</button>
+                        <div class="items-group">
+                            <a class="btn btn-success btn-clear" href="./check-out.html" id="clearCartButton">Check
+                                out</a>
+                            <span class="items-total-price">0$</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <svg style="display: none;">

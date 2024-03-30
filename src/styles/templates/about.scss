@@ -1,5 +1,41 @@
 .about {
+    &__wrap {
+        @include flex-row();
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 28px;
+    }
+
+    &__image {
+        width: 60% !important;
+    }
+
     &__title {
         margin-top: 20px;
+    }
+
+    &__description {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .about {
+        &__wrap {
+            @include flex-column();
+        }
+
+        &__image {
+            max-width: 80%;
+            margin-bottom: 20px;
+        }
+
+        &__title {
+            margin-top: 12px;
+        }
+
+        &__description {
+            font-size: 16px;
+        }
     }
 }

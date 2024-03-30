@@ -23,15 +23,17 @@ export class Product {
   }
   renderCartProduct() {
     return `
-    <li class="header__cart-item" data-product-id="${this.id}">
-      <img class="header__cart-item__picture" src="${this.picture}" alt="${this.name}">
-      <h3 class="header__cart-item__title">${this.name}</h3>
-      <div class="header__cart-item__controls">
-          <button class="btn btn-minus">-</button>
-          <input type="number" class="form-control amount-input" disabled="" value="${this.amount}" name="amountInput">
-          <button class="btn btn-add">+</button> 
+    <li class="cart__item" data-product-id="${this.id}">
+      <img class="cart__item-picture" src="${this.picture}" alt="${this.name}">
+      <div class="cart__group">
+        <h3 class="cart__item-title">${this.name}</h3>
+        <div class="cart__item-controls">
+            <button class="btn btn-minus">-</button>
+            <input type="number" class="form-control amount-input" disabled="" value="${this.amount}" name="amountInput">
+            <button class="btn btn-add">+</button> 
+        </div>
+        <span class="cart__item-price mt-3">${this.price}${currency}</span>
       </div>
-      <span class="header__cart-item__price">${this.price}${currency}</span>
-    </li>`;
+    </li><hr>`;
   }
 }

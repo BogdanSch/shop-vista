@@ -24,13 +24,15 @@
         <header class="header bg-dark text-light">
             <div class="container">
                 <div class="header__wrap">
-                    <a href="/dist/"
-                        class="header__logo d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <a href="/dist/" class="header__logo d-flex align-items-center mb-2 mb-lg-0">
                         <svg class="header__logo-svg">
                             <use xlink:href='#palette'></use>
                         </svg>
                         ShopVista
                     </a>
+                    <div class="header__burger">
+                        <span></span>
+                    </div>
                     <div class="header__menu">
                         <nav class="header__list nav justify-content-center">
                             <li class="header__item"><a href="/dist/" class="nav-link px-2">Home</a></li>
@@ -43,21 +45,9 @@
                         </nav>
                         <div class="header__tools">
                             <div class="header__cart">
-                                <svg class="shopping-cart">
+                                <svg class="shopping-cart" data-bs-toggle="modal" data-bs-target="#shopCartModal">
                                     <use xlink:href='#basketShopping'></use>
                                 </svg>
-                                <ul class="header__cart-list">
-                                    <div class="items-list">
-                                        Nothing yet to buy...
-                                    </div>
-                                    <div class="items-data mt-3">
-                                        <button type="button" class="btn btn-danger btn-clear"
-                                            id="clearCartButton">Clear the cart</button>
-                                        <a class="btn btn-success btn-clear" href="./check-out.html"
-                                            id="clearCartButton">Check out</a>
-                                        <span class="items-total-price">0$</span>
-                                    </div>
-                                </ul>
                             </div>
                             <div class="profile dropdown text-end">
                                 <a href="#" class="profile__link link-dark text-decoration-none dropdown-toggle"
@@ -92,6 +82,9 @@
                                     <h2 class="card-title text-center">Checkout completed!</h2>
                                     <div class="card-body">
                                         <p class="text-center">Your order is being handled.</p>
+                                        <div class="hero__more text-center mt-4">
+                                            <a href="/dist/" class="btn btn-primary btn-lg">Go Home</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -139,6 +132,28 @@
                     <use xlink:href='#arrowTop'></use>
                 </svg>
             </a>
+        </div>
+        <div class="cart modal fade" id="shopCartModal" aria-hidden="true">
+            <div class="cart__modal modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="cart__title modal-title">Shopping Cart</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="items-list modal-body">
+                        <p>Nothing yet in your cart...</p>
+                    </div>
+                    <div class="items-data modal-footer">
+                        <button type="button" class="btn btn-danger btn-clear" id="clearCartButton">Clear the
+                            cart</button>
+                        <div class="items-group">
+                            <a class="btn btn-success btn-clear" href="./check-out.html" id="clearCartButton">Check
+                                out</a>
+                            <span class="items-total-price">0$</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <svg style="display: none;">

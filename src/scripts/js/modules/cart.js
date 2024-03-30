@@ -98,13 +98,13 @@ export class Cart {
       this.cartProductsList.querySelectorAll(".btn-minus");
 
     plusItemButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        this.addItem(button.parentNode.parentNode);
+      button.addEventListener("click", () => {
+        this.addItem(button.parentNode.parentNode.parentNode);
       });
     });
     minusItemButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        this.removeItem(button.parentNode.parentNode);
+      button.addEventListener("click", () => {
+        this.removeItem(button.parentNode.parentNode.parentNode);
       });
     });
   }
