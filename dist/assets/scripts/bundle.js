@@ -468,7 +468,7 @@ function headerModule() {
 
     const headerOffset = 20;
 
-    window.addEventListener("scroll", (event) => {
+    window.addEventListener("scroll", () => {
       const header = $("header");
       if (window.scrollY >= headerOffset) {
         header.addClass("sticky");
