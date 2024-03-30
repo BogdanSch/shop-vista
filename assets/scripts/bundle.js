@@ -16,6 +16,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_authentication_user_manager_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/authentication/user-manager.js */ "./src/scripts/js/modules/authentication/user-manager.js");
 /* harmony import */ var _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/authentication/cookie.js */ "./src/scripts/js/modules/authentication/cookie.js");
 
+
+
+
+
+
 const authenticationHandlerModule = () => {
   const body = document.body;
   const loggedInUserCookieName = "loggedInUser";
@@ -134,13 +139,9 @@ const categories = {
 };
 
 function cardHandler() {
-  const cartProductsList = document.querySelector(
-    ".cart .items-list"
-  );
+  const cartProductsList = document.querySelector(".cart .items-list");
   const body = document.body;
-  const productsToGenerateContainer = document.querySelector(
-    ".products-container"
-  );
+  const productsToGenerateContainer = document.querySelector(".products-container");
   const amountProductsToDisplay = 12;
   const totalPriceLabel = document.querySelector(".items-total-price");
   const clearCartButton = document.querySelector("#clearCartButton");
@@ -218,7 +219,9 @@ function cardHandler() {
       productsLoader.loadProducts(categories.iphones, amountProductsToDisplay);
     }
   } else {
-    main();
+    if (body.dataset.svPage === "page" || body.dataset.svPage === "page") {
+      main();
+    }
   }
 }
 
@@ -374,7 +377,7 @@ function headerModule() {
         }
       });
     }
-    const indexPage = ["index.html", "/dist/", "", "/shop-vista/", "/"];
+    const indexPage = ["index.html", "/dist/", "", "/", "/shop-vista/"];
     let path = window.location.pathname;
     let currentPage = path.split("/").pop();
 
