@@ -326,7 +326,7 @@ const categories = {
 
 function cardHandler() {
   const cartProductsList = document.querySelector(
-    ".header__cart-list .items-list"
+    ".cart .items-list"
   );
   const body = document.body;
   const productsToGenerateContainer = document.querySelector(
@@ -355,6 +355,7 @@ function cardHandler() {
     clearCartButton.addEventListener("click", event => {
       cart.clearCart();
     });
+    
     if (body.dataset.svPage === "check-out") {
       const checkOutForm = document.querySelector(".check-out__form");
       checkOutForm.addEventListener("submit", (event) => {
@@ -588,6 +589,10 @@ function headerModule() {
           header.removeClass("sticky");
         }
       }
+    });
+    $('.header__burger').click(function (event) {
+      $('.header__burger, .header__menu').toggleClass('active');
+      $('body').toggleClass('lock');
     });
   })(jQuery);
 }

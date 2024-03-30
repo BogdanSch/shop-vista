@@ -1,0 +1,7 @@
+.footer {
+    margin-top: auto;
+
+    &__item {
+        @include list-style();
+    }
+}

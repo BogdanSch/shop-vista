@@ -1,0 +1,26 @@
+.hero {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
+        url("../images/store.avif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &-store {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
+            url("../images/yaroslav-romanenko-7YkwadIk2v8-unsplash.jpg");
+    }
+
+    &__title {
+        color: $white;
+        font-weight: 900;
+        font-size: 48px;
+    }
+
+    &__description {
+        color: $grey;
+    }
+}

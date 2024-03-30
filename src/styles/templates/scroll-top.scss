@@ -1,0 +1,32 @@
+.scroll-top {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    padding: 16px;
+    bottom: 20px;
+    left: 40px;
+    background-color: $accent;
+    border-radius: 8px;
+    cursor: pointer;
+    @include flex-row();
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &:not(.active) {
+        transform: translateY(100%);
+    }
+
+    svg {
+        fill: $white;
+        width: 30px;
+    }
+}

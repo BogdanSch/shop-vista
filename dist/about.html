@@ -102,22 +102,22 @@
                     </div>
                 </div>
             </section>
-            <section class="about-features" id="aboutFeatures" data-aos="fade-up" data-aos-duration="2000">
+            <section class="synopsis" id="aboutFeatures" data-aos="fade-up" data-aos-duration="2000">
                 <div class="container">
-                    <div class="about-features__wrap">
-                        <h2 class="about-features__title text-center mb-3">About The Company</h2>
+                    <div class="synopsis__wrap">
+                        <h2 class="synopsis__title text-center mb-3">About The Company</h2>
                         <div class="row">
-                            <div class="about-features__card col-md-6">
+                            <div class="synopsis__card col-md-6">
                                 <i class="bi bi-bar-chart-line"></i>
-                                <h3 class="about-features__title">Our Mission</h3>
-                                <p class="about-features__description">At ShopVista, our mission is to provide
+                                <h3 class="synopsis__title">Our Mission</h3>
+                                <p class="synopsis__description">At ShopVista, our mission is to provide
                                     customers with high-quality products and
                                     excellent service, ensuring a seamless shopping experience.</p>
                             </div>
-                            <div class="about-features__card col-md-6">
+                            <div class="synopsis__card col-md-6">
                                 <i class="bi bi-sunglasses"></i>
-                                <h3 class="about-features__title">Our Vision</h3>
-                                <p class="about-features__description">Our vision is to become a leading online
+                                <h3 class="synopsis__title">Our Vision</h3>
+                                <p class="synopsis__description">Our vision is to become a leading online
                                     retailer known for innovation,
                                     reliability,
                                     and customer satisfaction. We strive to exceed expectations and set new
@@ -126,18 +126,18 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="about-features__card col-md-6">
+                            <div class="synopsis__card col-md-6">
                                 <i class="bi bi-award-fill"></i>
-                                <h3 class="about-features__title">Our Team</h3>
-                                <ul class="about-features__list">
-                                    <li class="about-features__item">Bohdan Shcherbak - CEO</li>
-                                    <li class="about-features__item">Jane Smith - COO</li>
-                                    <li class="about-features__item">Mark Johnson - CFO</li>
+                                <h3 class="synopsis__title">Our Team</h3>
+                                <ul class="synopsis__list">
+                                    <li class="synopsis__item">Bohdan Shcherbak - CEO</li>
+                                    <li class="synopsis__item">Jane Smith - COO</li>
+                                    <li class="synopsis__item">Mark Johnson - CFO</li>
                                 </ul>
                             </div>
-                            <div class="about-features__card col-md-6">
+                            <div class="synopsis__card col-md-6">
                                 <i class="bi bi-journals"></i>
-                                <h3 class="about-features__title">Contact Us</h3>
+                                <h3 class="synopsis__title">Contact Us</h3>
                                 <address>
                                     <strong>Shop Vista</strong><br>
                                     123 Main Street<br>
@@ -216,7 +216,6 @@
                 </div>
             </section>
         </main>
-
         <footer class="footer bg-dark">
             <div class="container">
                 <div class="footer__wrap d-flex flex-wrap justify-content-between align-items-center py-3">
@@ -238,11 +237,12 @@
         </footer>
         <div class="controls">
             <div class="chatbot" id="chatbot">
-                <form action="" method="post" class="chatbot__form">
+                <form action="#" method="post" class="chatbot__form">
                     <div class="chatbot__answers" id="answers"></div>
                     <div class="chatbot__inputs">
-                        <input type="text" name="userInput" id="questionInput" class="form-control" />
-                        <input type="submit" class="btn btn-outline-light" value="OK" id="chatbotSubmit" />
+                        <input type="text" name="userInput" id="questionInput" class="chatbot__query-input form-control"
+                            placeholder="Type your message..." />
+                        <input type="submit" class="btn btn-outline-primary" value="🧩" id="chatbotSubmit" />
                     </div>
                 </form>
                 <button class="btn chatbot__button">

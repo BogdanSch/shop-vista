@@ -1,0 +1,11 @@
+.contact {
+    margin-top: 100px;
+
+    &__title {
+        color: $accent;
+
+        span {
+            color: $purple;
+        }
+    }
+}
