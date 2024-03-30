@@ -23,13 +23,9 @@ export const categories = {
 };
 
 export function cardHandler() {
-  const cartProductsList = document.querySelector(
-    ".cart .items-list"
-  );
+  const cartProductsList = document.querySelector(".cart .items-list");
   const body = document.body;
-  const productsToGenerateContainer = document.querySelector(
-    ".products-container"
-  );
+  const productsToGenerateContainer = document.querySelector(".products-container");
   const amountProductsToDisplay = 12;
   const totalPriceLabel = document.querySelector(".items-total-price");
   const clearCartButton = document.querySelector("#clearCartButton");
@@ -107,7 +103,9 @@ export function cardHandler() {
       productsLoader.loadProducts(categories.iphones, amountProductsToDisplay);
     }
   } else {
-    main();
+    if (body.dataset.svPage === "page" || body.dataset.svPage === "page") {
+      main();
+    }
   }
 }
 
