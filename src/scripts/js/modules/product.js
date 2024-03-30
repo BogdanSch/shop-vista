@@ -34,6 +34,6 @@ export class Product {
         </div>
         <span class="cart__item-price mt-3">${this.price}${currency}</span>
       </div>
-    </li><hr>`;
+    </li>`;
   }
 }

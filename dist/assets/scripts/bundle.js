@@ -881,7 +881,7 @@ class Product {
         </div>
         <span class="cart__item-price mt-3">${this.price}${_cart_handler_js__WEBPACK_IMPORTED_MODULE_0__.currency}</span>
       </div>
-    </li><hr>`;
+    </li>`;
   }
 }
 

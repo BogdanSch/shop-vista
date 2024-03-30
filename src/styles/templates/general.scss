@@ -63,12 +63,13 @@ img {
         border: 1px solid $accent;
 
         &:hover,
-        &:focus {
+        &:focus,
+        &:active {
             color: $white;
-            background-color: $accent;
+            background-color: $accent !important;
             box-shadow: $button-shadow;
             transform: translateY(-4px);
-            border: 1px solid $accent;
+            border: 1px solid $accent !important;
         }
     }
 
@@ -77,10 +78,11 @@ img {
         border: 1px solid $accent;
 
         &:hover,
-        &:focus {
+        &:focus,
+        &:active {
             color: $white;
-            border: 1px solid $accent;
-            background-color: $accent;
+            border: 1px solid $accent !important;
+            background-color: $accent !important;
             transform: translateY(-4px);
             box-shadow: $button-shadow;
         }
