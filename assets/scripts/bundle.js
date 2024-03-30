@@ -47,7 +47,7 @@ const authenticationHandlerModule = () => {
       event.preventDefault();
       const email = signInForm.find("#inputEmail").val();
       const password = signInForm.find("#inputPassword").val();
-      if (signIn(email, password)) location.href = "/";
+      if (signIn(email, password)) location.href = "/shop-vista/";
     });
   };
 
@@ -60,7 +60,7 @@ const authenticationHandlerModule = () => {
       const number = signUpForm.find("#inputNumber").val();
       const password = signUpForm.find("#inputPassword").val();
       signUp(name, email, number, password);
-      location.href = "/";
+      location.href = "/shop-vista/";
     });
   };
 
@@ -74,7 +74,7 @@ const authenticationHandlerModule = () => {
         $(".header .profile__dropdown").html(`<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`);
         $(".header .profile__dropdown .btn-log-out").on("click", () => {
           _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"].delete(loggedInUserCookieName);
-          location.href = "/";
+          location.href = "/shop-vista/";
         });
       } else {
         $(".header .profile__dropdown").html(`
@@ -170,7 +170,7 @@ function cardHandler() {
       checkOutForm.addEventListener("submit", (event) => {
         event.preventDefault();
         cart.clearCart();
-        window.location.assign("/check-out-success.html");
+        window.location.assign("/shop-vista/check-out-success.html");
       })
     }
   }
@@ -374,7 +374,7 @@ function headerModule() {
         }
       });
     }
-    const indexPage = ["index.html", "/dist/", "", "/"];
+    const indexPage = ["index.html", "/dist/", "", "/shop-vista/", "/"];
     let path = window.location.pathname;
     let currentPage = path.split("/").pop();
 
