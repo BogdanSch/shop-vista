@@ -74,15 +74,16 @@
             <div class="check-out">
                 <div class="container">
                     <div class="check-out__wrap">
-                        <form id="checkoutForm" class="check-out__form card p-4" method="post"
-                            action="/shop-vista/check-out-success.html">
+                        <form id="checkoutForm" class="check-out__form card p-4" method="get"
+                            action="./check-out-success.html">
                             <div class="mb-3">
                                 <h2 class="text-center mb-3">Check Out Form</h2>
                                 <p>Fields that are required to be filled in are marked with *</p>
                             </div>
                             <div class="mb-3">
                                 <label for="fullName" class="form-label">Full Name*</label>
-                                <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                <input type="text" class="form-control" id="fullName" name="fullName" required=""
+                                    placeholder="Enter your full name">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address*</label>
@@ -96,11 +97,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="cardNumber" class="form-label">Card Number*</label>
-                                <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
+                                <input type="text" class="form-control" id="cardNumber" name="cardNumber" required=""
+                                    placeholder="Enter your bank card number such as: 1234 1234 12345">
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Delivery Address*</label>
-                                <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                                <textarea class="form-control" id="address" name="address" rows="3" required=""
+                                    placeholder="Enter your delivery address"></textarea>
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="termsAndConditions" required>

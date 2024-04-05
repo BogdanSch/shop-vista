@@ -171,7 +171,7 @@ function cardHandler() {
       checkOutForm.addEventListener("submit", (event) => {
         event.preventDefault();
         cart.clearCart();
-        window.location.assign("/shop-vista/check-out-success.html");
+        window.location.assign("./check-out-success.html");
       })
     }
   }
