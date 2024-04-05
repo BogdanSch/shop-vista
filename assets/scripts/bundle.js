@@ -377,7 +377,7 @@ function headerModule() {
         }
       });
     }
-    const indexPage = ["index.html", "/dist/", "", "/", "/shop-vista/"];
+    const indexPage = ["index.html", "/dist/", "", "/", "/shop-vista/", "/index.html"];
     let path = window.location.pathname;
     let currentPage = path.split("/").pop();
 
