@@ -55,7 +55,7 @@ export function cardHandler() {
       checkOutForm.addEventListener("submit", (event) => {
         event.preventDefault();
         cart.clearCart();
-        window.location.assign("/dist/check-out-success.html");
+        window.location.assign("./check-out-success.html");
       })
     }
   }
