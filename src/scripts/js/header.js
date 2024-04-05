@@ -12,7 +12,7 @@ export default function headerModule() {
         }
       });
     }
-    const indexPage = ["index.html", "/dist/", "", "/"];
+    const indexPage = ["index.html", "/dist/", "", "/", "/index.html"];
     let path = window.location.pathname;
     let currentPage = path.split("/").pop();
 
