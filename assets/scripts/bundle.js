@@ -52,7 +52,8 @@ const authenticationHandlerModule = () => {
       event.preventDefault();
       const email = signInForm.find("#inputEmail").val();
       const password = signInForm.find("#inputPassword").val();
-      if (signIn(email, password)) location.href = "/shop-vista/";
+      if (signIn(email, password)) 
+        window.location.assign("./index.html");
     });
   };
 
@@ -65,7 +66,7 @@ const authenticationHandlerModule = () => {
       const number = signUpForm.find("#inputNumber").val();
       const password = signUpForm.find("#inputPassword").val();
       signUp(name, email, number, password);
-      location.href = "/shop-vista/";
+      window.location.assign("./index.html");
     });
   };
 
@@ -79,7 +80,7 @@ const authenticationHandlerModule = () => {
         $(".header .profile__dropdown").html(`<li><button class="btn btn-log-out dropdown-item">Log out</button></li>`);
         $(".header .profile__dropdown .btn-log-out").on("click", () => {
           _modules_authentication_cookie_js__WEBPACK_IMPORTED_MODULE_2__["default"].delete(loggedInUserCookieName);
-          location.href = "/shop-vista/";
+          window.location.assign("./index.html");
         });
       } else {
         $(".header .profile__dropdown").html(`
